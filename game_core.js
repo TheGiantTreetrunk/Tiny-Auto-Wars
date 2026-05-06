@@ -16,8 +16,14 @@ var offensive = 0;
 var till_offensive = 3;
 var offensive_length = 3;
 //player army variables
-var offensive_team = [1,1,1,1,1];
-var defensive_team = [1,1,1,1,1];
+var pl_offensive_team = [1,1,1,1,1];
+var pl_defensive_team = [1,1,1,1,1];
+var pl_offensive_army_loc = 1;
+var pl_defensive_army_loc = 0;
 
 
 //enemy army variables
+var en_offensive_team = [1,1,1,1,1];
+var en_defensive_team = [1,1,1,1,1];
+var en_offensive_army_loc = 8;
+var en_defensive_army_loc = 9;
