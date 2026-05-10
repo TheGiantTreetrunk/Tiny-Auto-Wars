@@ -14,44 +14,39 @@
         <script defer type="text/javascript" src="game_core.js?=v1.0"></script>
     </head>
 
-    <body>
+    <body onload="Hud(0)">
         <div id="mm">
             <h1>Tiny Auto Wars</h1>
-            <button>Play Now</button>
+            <button onclick="Hud(1)">Play Now</button>
         </div>
 
-        <table style="margin: auto; text-align: center;">
-            <!-- Row 1: Fighter, Alchemist, Theologian -->
-            <tr>
-                <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
-                <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
-                <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
-            </tr>
-            <!-- Row 2: Ranger, Monk, Knight -->
-            <tr>
-                <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
-                <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
-                <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
-            </tr>
-            <!-- Row 3: Troubadour, Artillerist, Cuirassier -->
-            <tr>
-                <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
-                <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
-                <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
-            </tr>
-            <!-- Row 4: Duelist, Dragoon, Privateer -->
-            <tr>
-                <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
-                <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
-                <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
-            </tr>
-            <!-- Row 5: Inquisitor, Sapper, (Bonus/Custom Slot) -->
-            <tr>
-                <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
-                <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
-                <td><button data-class-num="0" class="class_select"><a class="icns white">@</a></button></td>
-            </tr>
-        </table>
+        <div id="rooster">
+            <table style="margin: auto; text-align: center;">
+                <!-- Row 1: Fighter, Alchemist, Theologian -->
+                <tr>
+                    <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
+                    <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
+                    <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
+                    <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
+                    <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
+                </tr>
+                <!-- Row 2: Ranger, Monk, Knight -->
+                <tr>
+                    <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
+                    <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
+                    <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
+                    <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
+                    <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
+                </tr>
+                <tr>
+                    <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
+                    <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
+                    <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
+                    <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
+                    <td><button data-class-num="0" class="class_select"><a class="icns white">@</a></button></td>
+                </tr>
+            </table>
+        </div>
 
         <div id="barracks">
             <h3>Central Command</h3>

@@ -280,3 +280,98 @@ button:disabled {
     box-sizing: border-box;
     z-index: 100; /* Keeps it above the dungeon floor */
 }
+
+#class_icon {
+    font-size: 24px;
+}
+
+.class_select {
+    width: 48px;
+    height: 48px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    font-family: 'Game_Icns';
+    transition: background-color 0.4s;
+}
+
+.class_select:has(a.red):hover,
+.class_select:has(a.red).selected {
+    background-color: #ff6666;
+}
+
+.class_select:has(a.blue):hover,
+.class_select:has(a.blue).selected {
+    background-color: #6666ff;
+}
+
+.class_select:has(a.brown):hover,
+.class_select:has(a.brown).selected {
+    background-color: #574200;
+}
+
+.class_select:has(a.green):hover,
+.class_select:has(a.green).selected {
+    background-color: #66ff66;
+}
+
+.class_select:has(a.yellow):hover,
+.class_select:has(a.yellow).selected {
+    background-color: #ffff66;
+}
+
+.class_select:has(a.purple):hover,
+.class_select:has(a.purple).selected {
+    background-color: #ff66ff;
+}
+
+.class_select:has(a.lime):hover,
+.class_select:has(a.lime).selected {
+    background-color: #ccff66;
+}
+
+.class_select:has(a.cyan):hover,
+.class_select:has(a.cyan).selected {
+    background-color: #66ffff;
+}
+
+.class_select:has(a.magenta):hover,
+.class_select:has(a.magenta).selected {
+    background-color: #ff66ff;
+}
+
+/* Cuirassier / Juggernaut - Pink Glow */
+.class_select:has(a.pink):hover,
+.class_select:has(a.pink).selected {
+    background-color: #ff99ff;
+}
+
+/* Dragoon - Steel Glow */
+.class_select:has(a.dark_gray):hover,
+.class_select:has(a.dark_gray).selected {
+    background-color: #808080;
+}
+
+/* Privateer - Silver Glow */
+.class_select:has(a.light_gray):hover,
+.class_select:has(a.light_gray).selected {
+    background-color: #d3d3d3;
+}
+
+/* Inquisitor - Deep Earth Glow */
+.class_select:has(a.dark_brown):hover,
+.class_select:has(a.dark_brown).selected {
+    background-color: #8b5429;
+}
+
+/* Sapper - Industrial Ash Glow */
+.class_select:has(a.gray):hover,
+.class_select:has(a.gray).selected {
+    background-color: #a9a9a9;
+}
+
+/* Hooman - Bright White Glow */
+.class_select:has(a.white):hover,
+.class_select:has(a.white).selected {
+    background-color: #e0e0e0;
+}

@@ -1,10 +1,10 @@
 //global variables
 var battle_field = [1,1,1,1,1,2,2,2,2,2]; // 1 is player 2 is enemy territory
-var classes = ["Hooman","Fighter","Alchemist","Theologian","Ranger","Monk","Knight","Troubadour","Artillerist","Cuirassier", "Duelist", "Dragoon", "Privateer", "Inquisitor", "Sapper"];
-var class_health = [0, 15, 8, 15, 12, 10, 17, 12, 10, 16, 12, 14, 11, 13, 10];
-var class_damage = [0, 6, 6, 3, 4, 3, 6, 3, 8, 7, 7, 5, 6, 5, 9];
-var class_armor  = [0, 12, 0, 8, 5, 3, 18, 8, 5, 15, 4, 10, 6, 12, 3];
-var class_colors = ["white","red","blue","brown","green","yellow","purple","cyan","magenta", "pink", "lime", "dark_gray", "light_gray", "dark_brown", "gray"];
+var classes = ["Hooman","Fighter","Alchemist","Theologian","Ranger","Monk","Knight","Troubadour","Artillerist","Cuirassier", "Duelist", "Dragoon", "Privateer", "Inquisitor", "Sapper", "Juggernaut"];
+var class_health = [0, 15, 8, 15, 12, 10, 17, 12, 10, 16, 12, 14, 11, 13, 10, 25];
+var class_damage = [0, 6, 6, 3, 4, 3, 6, 3, 8, 7, 7, 5, 6, 5, 9, 5];
+var class_armor  = [0, 12, 0, 8, 5, 3, 18, 8, 5, 15, 4, 10, 6, 12, 3, 22];
+var class_colors = ["white","red","blue","brown","green","yellow","purple","cyan","magenta", "pink", "lime", "dark_gray", "light_gray", "dark_brown", "gray", "pink"];
 
 //stats for nerds
 var class_unique_weapon = ["Zweihandler","Musket","Mace","Long Bow","Quarterstaff","Long Sword","Rapier","Rifle"];
@@ -51,12 +51,18 @@ var plyr_points = 0;
 var enmy_points = 0;
 
 function Hud(comand){
+	document.getElementById("mm").style.display = "none";
+	document.getElementById("rooster").style.display = "none";
+	document.getElementById("barracks").style.display = "none";
+
     if(comand == 0) {
         //start
+		document.getElementById("mm").style.display = "block";
     }
 
     if(comand == 1) {
         //class viewer
+		document.getElementById("rooster").style.display = "block";
     }
 
     if(comand == 2) {
