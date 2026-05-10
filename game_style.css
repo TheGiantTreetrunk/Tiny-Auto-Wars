@@ -138,85 +138,40 @@ button:disabled {
 	color: #9f9f9f;
 }
 
-.back_black {
-	background-color: #000000;
-	color: #ffffff;
+/* Navy - Mariner (#2d335a) */
+.navy { color: #2d335a; }
+.class_select:has(a.navy):hover, .class_select:has(a.navy).selected { 
+    background-color: #4a5494; 
 }
 
-.back_white {
-	background-color: #ffffff;
-	color: #000000;
+/* Olive - Plague Doctor (#4a4d2e) */
+.olive { color: #4a4d2e; }
+.class_select:has(a.olive):hover, .class_select:has(a.olive).selected { 
+    background-color: #7b804d; 
 }
 
-.back_red {
-	background-color: #883232;
-	color: #ffffff;
+/* Copper - Grenadier (#a1683c) */
+.copper { color: #a1683c; }
+.class_select:has(a.copper):hover, .class_select:has(a.copper).selected { 
+    background-color: #d68a50; 
 }
 
-.back_cyan {
-	background-color: #67b6bd;
-	color: #000000;
+/* Slate - Spy (#4b5d6b) */
+.slate { color: #4b5d6b; }
+.class_select:has(a.slate):hover, .class_select:has(a.slate).selected { 
+    background-color: #7d9bb3; 
 }
 
-.back_magenta {
-	background-color: #8b3f96;
-	color: #ffffff;
-}
-
-.back_green {
-	background-color: #55a049;
-	color: #000000;
-}
-
-.back_blue {
-	background-color: #40318d;
-	color: #ffffff;
-}
-
-.back_yellow {
-	background-color: #bfce72;
-	color: #000000;
-}
-
-.back_brown {
-	background-color: #8b5429;
-	color: #000000;
-}
-
-.back_dark_brown {
-	background-color: #574200;
-	color: #ffffff;
-}
-
-.back_pink {
-	background-color: #b86962;
-	color: #ffffff;
-}
-
-.back_dark_gray {
-	background-color: #505050;
-	color: #ffffff;
-}
-
-.back_gray {
-	background-color: #787878;
-	color: #ffffff;
-}
-
-.back_lime {
-	background-color: #94e089;
-	color: #000000;
-}
-
-.back_purple {
-	background-color: #7869c4;
-	color: #ffffff;
-}
-
-.back_light_gray {
-	background-color: #9f9f9f;
-	color: #ffffff;
-}
+.burgundy  { color: #631b1b; } /* Deep Red-Brown */
+.teal      { color: #3b7575; } /* Oxidized Bronze */
+.gold      { color: #9c8e2a; } /* Tarnished Gold */
+.forest    { color: #2e4d23; } /* Hunting Green */
+.indigo    { color: #322b5e; } /* Royal Uniform Blue */
+.charcoal  { color: #2b2b2b; } /* Gunpowder Smoke */
+.clay      { color: #a35d46; } /* Terracotta/Brick */
+.mint      { color: #76a38d; } /* Faded Seafoam */
+.violet    { color: #5a3a7a; } /* Clerical Purple */
+.ochre     { color: #916a24; } /* Leather/Wax */
 
 #tap_to_play_button {
     padding: 14px 0px;
