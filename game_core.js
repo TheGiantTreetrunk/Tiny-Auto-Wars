@@ -35,16 +35,6 @@ var class_colors = [
     "clay", "mint", "violet", "ochre", "black"
 ];
 
-var class_roles = [
-    "Front Liner", // Hooman (Index 0)
-    "Front Liner", "Support", "Support", "Vanguard", "Support", // 1-5
-    "Front Liner", "Support", "Vanguard", "Front Liner", "Vanguard", // 6-10
-    "Front Liner", "Support", "Front Liner", "Vanguard", "Vanguard", // 11-15
-    "Support", "Front Liner", "Vanguard", "Front Liner", "Front Liner", // 16-20
-    "Vanguard", "Vanguard", "Support", "Vanguard", "Support", // 21-25
-    "Vanguard", "Support", "Support", "Front Liner", "Front Liner" // 26-30
-];
-
 //stats for nerds
 var class_unique_weapon = [
     "None", "Zweihandler", "Musket", "Mace", "Long Bow", "Quarterstaff", 
@@ -109,22 +99,23 @@ var terrain = [0,0,0,0,0,0,0,0,0,0];
 var terrain_type = ["Flat","Hills","Mountains"];
 var weather = [0,0,0,0,0,0,0,0,0,0];
 var weather_type = ["Clear","Cloudy","Rain","Snow"];
-var offensive = 0;
-var till_offensive = 3;
-var offensive_length = 3;
 
 //player army variables
-var pl_offensive_team = [1,1,1,1,1];
-var pl_defensive_team = [1,1,1,1,1];
-var pl_offensive_army_loc = 1;
-var pl_defensive_army_loc = 0;
-
-
-//enemy army variables
-var en_offensive_team = [1,1,1,1,1];
-var en_defensive_team = [1,1,1,1,1];
-var en_offensive_army_loc = 8;
-var en_defensive_army_loc = 9;
+var player = {
+    class: "None",
+	lvl: 1,
+    hp: 40,  
+    dmg: 20,   
+    arm: 10, 
+	inv: {
+		pot_lvl: 0,
+		pot_health: 0,
+		pot_poison: 0,
+		pot_strength: 0,
+		pot_armor: 0,
+		pot_damage: 0
+	}
+};
 
 
 setInterval(function () {Battle()}, 1500);
@@ -177,6 +168,45 @@ function Hud(comand){
 
     if(comand == 9) {
         //the end of the game.
+    }
+}
+
+function class_selection(class_num, button_element) {
+    
+    var buttons = document.querySelectorAll('.class_select');
+    buttons.forEach(function(button) {
+        button.classList.remove('selected');
+    });
+    button_element.classList.add('selected');
+
+    
+    player.class = class_num;
+    player.hp = class_health[class_num];
+    player.str = class_damage[class_num];
+    player.thp = class_armor[class_num];
+    
+    
+    player.weapon_mult = 1.0; 
+    player.isPanicked = false;
+    player.stress = 0;
+
+    if (class_data[class_num]) {
+        var selected_class = class_data[class_num];
+        var selectedColorClass = class_colors[class_num]; 
+
+        document.getElementById("name_of_class").innerHTML = selected_class.name.toUpperCase();
+        document.getElementById("class_description").innerHTML = selected_class.description;
+        
+        document.getElementById("class_icon").innerHTML = `<a class='icns ${selectedColorClass}'>@</a>`;
+        
+        let gearInfo = `<br><span style='font-size:10px; color:#888;'>WEAPON: ${class_unique_weapon[class_num]}<br>
+                        ARMOR: ${class_unique_armor[class_num]}</span>`;
+
+        document.getElementById("class_stats").innerHTML = `
+            <a class='red icns'>~</a> ${class_health[class_num]} 
+            <a class='yellow icns'>$</a> ${class_damage[class_num]} 
+            <a class='purple icns'>%</a> ${class_armor[class_num]}
+            ${gearInfo}`;
     }
 }
 	

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Tiny Auto Wars</title>
+        <title>Tiny Auto Arena</title>
         <meta charset="UTF-8">
         <meta name="MobileOptimized" content="480"/>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -16,55 +16,63 @@
 
     <body onload="Hud(0)">
         <div id="mm">
-            <h1>Tiny Auto Wars</h1>
+            <h1>Tiny Auto Arena</h1>
             <button onclick="Hud(1)">Play Now</button>
         </div>
 
         <div id="rooster">
+            <h1 style="text-align: center">Class Select</h1> 
+            <h3 id="name_of_class" style="text-align: center">Pick A Class</h3>
+            <p id="class_description" style="text-align: center">It's too dangerous to go in alone</p>
+            <p id="class_icon" class="icns" style="text-align: center">@</p>
+            <p id="class_stats" style="text-align: center">Look! So many to choose from.<br><br></p>
+
             <table style="margin: auto; text-align: center;">
-            <tr>
-                <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
-                <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
-                <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
-                <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
-                <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
-            </tr>
-            <tr>
-                <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
-                <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
-                <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
-                <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
-                <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
-            </tr>
-            <tr>
-                <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
-                <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
-                <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
-                <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
-                <td><button data-class-num="15" class="class_select"><a class="icns white">@</a></button></td>
-            </tr>
-            <tr>
-                <td><button data-class-num="16" class="class_select"><a class="icns navy">@</a></button></td>
-                <td><button data-class-num="17" class="class_select"><a class="icns olive">@</a></button></td>
-                <td><button data-class-num="18" class="class_select"><a class="icns copper">@</a></button></td>
-                <td><button data-class-num="19" class="class_select"><a class="icns slate">@</a></button></td>
-                <td><button data-class-num="20" class="class_select"><a class="icns teal">@</a></button></td>
-            </tr>
-            <tr>
-                <td><button data-class-num="21" class="class_select"><a class="icns burgundy">@</a></button></td>
-                <td><button data-class-num="22" class="class_select"><a class="icns gold">@</a></button></td>
-                <td><button data-class-num="23" class="class_select"><a class="icns forest">@</a></button></td>
-                <td><button data-class-num="24" class="class_select"><a class="icns indigo">@</a></button></td>
-                <td><button data-class-num="25" class="class_select"><a class="icns charcoal">@</a></button></td>
-            </tr>
-            <tr>
-                <td><button data-class-num="26" class="class_select"><a class="icns clay">@</a></button></td>
-                <td><button data-class-num="27" class="class_select"><a class="icns mint">@</a></button></td>
-                <td><button data-class-num="28" class="class_select"><a class="icns violet">@</a></button></td>
-                <td><button data-class-num="29" class="class_select"><a class="icns ochre">@</a></button></td>
-                <td><button data-class-num="30" class="class_select"><a class="icns black" style="background: #333;">@</a></button></td>
-            </tr>
-        </table>
+    <tr>
+        <td><button data-class-num="0" class="class_select"><a class="icns white">@</a></button></td>
+        <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
+        <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
+        <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
+        <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
+        <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
+    </tr>
+    <tr>
+        <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
+        <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
+        <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
+        <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
+        <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
+        <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
+    </tr>
+    <tr>
+        <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
+        <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
+        <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
+        <td><button data-class-num="15" class="class_select"><a class="icns navy">@</a></button></td>
+        <td><button data-class-num="16" class="class_select"><a class="icns olive">@</a></button></td>
+        <td><button data-class-num="17" class="class_select"><a class="icns copper">@</a></button></td>
+    </tr>
+    <tr>
+        <td><button data-class-num="18" class="class_select"><a class="icns slate">@</a></button></td>
+        <td><button data-class-num="19" class="class_select"><a class="icns teal">@</a></button></td>
+        <td><button data-class-num="20" class="class_select"><a class="icns burgundy">@</a></button></td>
+        <td><button data-class-num="21" class="class_select"><a class="icns gold">@</a></button></td>
+        <td><button data-class-num="22" class="class_select"><a class="icns forest">@</a></button></td>
+        <td><button data-class-num="23" class="class_select"><a class="icns indigo">@</a></button></td>
+    </tr>
+    <tr>
+        <td><button data-class-num="24" class="class_select"><a class="icns charcoal">@</a></button></td>
+        <td><button data-class-num="25" class="class_select"><a class="icns clay">@</a></button></td>
+        <td><button data-class-num="26" class="class_select"><a class="icns mint">@</a></button></td>
+        <td><button data-class-num="27" class="class_select"><a class="icns violet">@</a></button></td>
+        <td><button data-class-num="28" class="class_select"><a class="icns ochre">@</a></button></td>
+        <td><button data-class-num="29" class="class_select"><a class="icns black" style="background: #333;">@</a></button></td>
+    </tr>
+</table>
+
+        <div style="text-align: center">
+            <button class="play_bttn" onclick="">Play!</button>
+        </div>
         </div>
 
         <div id="barracks">
@@ -123,5 +131,21 @@
                 </tr>
             </table>
         </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const classButtons = document.querySelectorAll('.class_select');
+            classButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const classNum = button.dataset.classNum;
+                    if (classNum) {
+                        if (typeof class_selection === 'function') {
+                            class_selection(parseInt(classNum, 10), button);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     </body>
 </html>
