@@ -18,6 +18,22 @@
         <div id="mm">
             <h1>Tiny Auto Arena</h1>
             <button onclick="Hud(1)">Play Now</button>
+            <br>
+            <button onclick="Hud(2)">How To Play</button>
+        </div>
+
+        <div id="htp">
+            <h1>How To Play</h1>
+
+            <p>
+                <ul>
+                    <li>Pick your Hero! (There are lots to pick from!)</li>
+                    <li>Buy Potions to boost your heroes attacks!</li>
+                    <li>Level Up your Hero to fight more powerful enemies</li>
+                    <li>Make it to the top! (or die trying...)</li>
+                </ul>
+            </p>
+            <button onclick="Hud(0)">Ok, Got It</button>
         </div>
 
         <div id="rooster">
@@ -28,108 +44,59 @@
             <p id="class_stats" style="text-align: center">Look! So many to choose from.<br><br></p>
 
             <table style="margin: auto; text-align: center;">
-    <tr>
-        <td><button data-class-num="0" class="class_select"><a class="icns white">@</a></button></td>
-        <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
-        <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
-        <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
-        <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
-        <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
-    </tr>
-    <tr>
-        <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
-        <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
-        <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
-        <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
-        <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
-        <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
-    </tr>
-    <tr>
-        <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
-        <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
-        <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
-        <td><button data-class-num="15" class="class_select"><a class="icns navy">@</a></button></td>
-        <td><button data-class-num="16" class="class_select"><a class="icns olive">@</a></button></td>
-        <td><button data-class-num="17" class="class_select"><a class="icns copper">@</a></button></td>
-    </tr>
-    <tr>
-        <td><button data-class-num="18" class="class_select"><a class="icns slate">@</a></button></td>
-        <td><button data-class-num="19" class="class_select"><a class="icns teal">@</a></button></td>
-        <td><button data-class-num="20" class="class_select"><a class="icns burgundy">@</a></button></td>
-        <td><button data-class-num="21" class="class_select"><a class="icns gold">@</a></button></td>
-        <td><button data-class-num="22" class="class_select"><a class="icns forest">@</a></button></td>
-        <td><button data-class-num="23" class="class_select"><a class="icns indigo">@</a></button></td>
-    </tr>
-    <tr>
-        <td><button data-class-num="24" class="class_select"><a class="icns charcoal">@</a></button></td>
-        <td><button data-class-num="25" class="class_select"><a class="icns clay">@</a></button></td>
-        <td><button data-class-num="26" class="class_select"><a class="icns mint">@</a></button></td>
-        <td><button data-class-num="27" class="class_select"><a class="icns violet">@</a></button></td>
-        <td><button data-class-num="28" class="class_select"><a class="icns ochre">@</a></button></td>
-        <td><button data-class-num="29" class="class_select"><a class="icns black" style="background: #333;">@</a></button></td>
-    </tr>
-</table>
-
-        <div style="text-align: center">
-            <button class="play_bttn" onclick="">Play!</button>
-        </div>
-        </div>
-
-        <div id="barracks">
-            <h3>Central Command</h3>
-            <p id="incoming_offensive">Next Offensive: 3 Round(s)</p>
-            <table>
                 <tr>
-                    <td id="slot_10_terrain">10</td>
-                    <td id="slot_10_route">X</td>
-                    <td id="slot_10_weather"></td>
+                    <td><button data-class-num="0" class="class_select"><a class="icns white">@</a></button></td>
+                    <td><button data-class-num="1" class="class_select"><a class="icns red">@</a></button></td>
+                    <td><button data-class-num="2" class="class_select"><a class="icns blue">@</a></button></td>
+                    <td><button data-class-num="3" class="class_select"><a class="icns brown">@</a></button></td>
+                    <td><button data-class-num="4" class="class_select"><a class="icns green">@</a></button></td>
+                    <td><button data-class-num="5" class="class_select"><a class="icns yellow">@</a></button></td>
                 </tr>
                 <tr>
-                    <td id="slot_9_terrain">9</td>
-                    <td id="slot_9_route">X</td>
-                    <td id="slot_9_weather"></td>
+                    <td><button data-class-num="6" class="class_select"><a class="icns purple">@</a></button></td>
+                    <td><button data-class-num="7" class="class_select"><a class="icns cyan">@</a></button></td>
+                    <td><button data-class-num="8" class="class_select"><a class="icns magenta">@</a></button></td>
+                    <td><button data-class-num="9" class="class_select"><a class="icns pink">@</a></button></td>
+                    <td><button data-class-num="10" class="class_select"><a class="icns lime">@</a></button></td>
+                    <td><button data-class-num="11" class="class_select"><a class="icns dark_gray">@</a></button></td>
                 </tr>
                 <tr>
-                    <td id="slot_8_terrain">8</td>
-                    <td id="slot_8_route">X</td>
-                    <td id="slot_8_weather"></td>
+                    <td><button data-class-num="12" class="class_select"><a class="icns light_gray">@</a></button></td>
+                    <td><button data-class-num="13" class="class_select"><a class="icns dark_brown">@</a></button></td>
+                    <td><button data-class-num="14" class="class_select"><a class="icns gray">@</a></button></td>
+                    <td><button data-class-num="15" class="class_select"><a class="icns navy">@</a></button></td>
+                    <td><button data-class-num="16" class="class_select"><a class="icns olive">@</a></button></td>
+                    <td><button data-class-num="17" class="class_select"><a class="icns copper">@</a></button></td>
                 </tr>
                 <tr>
-                    <td id="slot_7_terrain">7</td>
-                    <td id="slot_7_route">X</td>
-                    <td id="slot_7_weather"></td>
+                    <td><button data-class-num="18" class="class_select"><a class="icns slate">@</a></button></td>
+                    <td><button data-class-num="19" class="class_select"><a class="icns teal">@</a></button></td>
+                    <td><button data-class-num="20" class="class_select"><a class="icns burgundy">@</a></button></td>
+                    <td><button data-class-num="21" class="class_select"><a class="icns gold">@</a></button></td>
+                    <td><button data-class-num="22" class="class_select"><a class="icns forest">@</a></button></td>
+                    <td><button data-class-num="23" class="class_select"><a class="icns indigo">@</a></button></td>
                 </tr>
                 <tr>
-                    <td id="slot_6_terrain">6</td>
-                    <td id="slot_6_route">X</td>
-                    <td id="slot_6_weather"></td>
-                </tr>
-                <tr>
-                    <td id="slot_5_terrain">5</td>
-                    <td id="slot_5_route">X</td>
-                    <td id="slot_5_weather"></td>
-                </tr>
-                <tr>
-                    <td id="slot_4_terrain">4</td>
-                    <td id="slot_4_route">X</td>
-                    <td id="slot_4_weather"></td>
-                </tr>
-                <tr>
-                    <td id="slot_3_terrain">3</td>
-                    <td id="slot_3_route">X</td>
-                    <td id="slot_3_weather"></td>
-                </tr>
-                <tr>
-                    <td id="slot_2_terrain">2</td>
-                    <td id="slot_2_route">X</td>
-                    <td id="slot_2_weather"></td>
-                </tr>
-                <tr>
-                    <td id="slot_1_terrain">1</td>
-                    <td id="slot_1_route">X</td>
-                    <td id="slot_1_weather"></td>
+                    <td><button data-class-num="24" class="class_select"><a class="icns charcoal">@</a></button></td>
+                    <td><button data-class-num="25" class="class_select"><a class="icns clay">@</a></button></td>
+                    <td><button data-class-num="26" class="class_select"><a class="icns mint">@</a></button></td>
+                    <td><button data-class-num="27" class="class_select"><a class="icns violet">@</a></button></td>
+                    <td><button data-class-num="28" class="class_select"><a class="icns ochre">@</a></button></td>
+                    <td><button data-class-num="29" class="class_select"><a class="icns black" style="background: #333;">@</a></button></td>
                 </tr>
             </table>
+
+            <div style="text-align: center">
+                <button class="play_bttn" onclick="Hud(3)">Play!</button>
+            </div>
+        </div>
+
+        <div id="store_front">
+            <h1 style="text-align: center">Tavern</h1> 
+            <h3 id="name_of_class" style="text-align: center">Class Name</h3>
+            <p id="class_description" style="text-align: center">the class description</p>
+            <p id="class_icon" class="icns" style="text-align: center">@</p>
+            <p id="class_stats" style="text-align: center">the class stats<br><br></p>
         </div>
 
         <script>

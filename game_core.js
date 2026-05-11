@@ -102,7 +102,7 @@ var weather_type = ["Clear","Cloudy","Rain","Snow"];
 
 //player army variables
 var player = {
-    class: "None",
+    class: 0,
 	lvl: 1,
     hp: 40,  
     dmg: 20,   
@@ -125,8 +125,9 @@ var enmy_points = 0;
 
 function Hud(comand){
 	document.getElementById("mm").style.display = "none";
+	document.getElementById("htp").style.display = "none";
 	document.getElementById("rooster").style.display = "none";
-	document.getElementById("barracks").style.display = "none";
+	document.getElementById("store_front").style.display = "none";
 
     if(comand == 0) {
         //start
@@ -134,16 +135,22 @@ function Hud(comand){
     }
 
     if(comand == 1) {
-        //class viewer
+        //class selecter is a new game
 		document.getElementById("rooster").style.display = "block";
     }
 
     if(comand == 2) {
         //how to play
+		document.getElementById("htp").style.display = "block";
     }
 
     if(comand == 3) {
-        //team builder
+        //pre battle prep
+		if(player.class != 0) {
+			document.getElementById("store_front").style.display = "block";
+		} else {
+			document.getElementById("rooster").style.display = "block";
+		}
     }
 
     if(comand == 4) {

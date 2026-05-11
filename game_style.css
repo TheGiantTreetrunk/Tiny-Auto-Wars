@@ -173,6 +173,61 @@ button:disabled {
 .violet    { color: #5a3a7a; } /* Clerical Purple */
 .ochre     { color: #916a24; } /* Leather/Wax */
 
+
+/* Age of Exploration / Nautical Colors */
+.class_select:has(a.navy):hover, .class_select:has(a.navy).selected { 
+    background-color: #4a5494; 
+}
+.class_select:has(a.olive):hover, .class_select:has(a.olive).selected { 
+    background-color: #7b804d; 
+}
+.class_select:has(a.copper):hover, .class_select:has(a.copper).selected { 
+    background-color: #d68a50; 
+}
+.class_select:has(a.slate):hover, .class_select:has(a.slate).selected { 
+    background-color: #7d9bb3; 
+}
+.class_select:has(a.teal):hover, .class_select:has(a.teal).selected { 
+    background-color: #5ba1a1; 
+}
+
+/* Renaissance / Mercenary Palette */
+.class_select:has(a.burgundy):hover, .class_select:has(a.burgundy).selected { 
+    background-color: #9c3535; 
+}
+.class_select:has(a.gold):hover, .class_select:has(a.gold).selected { 
+    background-color: #d1bf3b; 
+}
+.class_select:has(a.forest):hover, .class_select:has(a.forest).selected { 
+    background-color: #4b7d3a; 
+}
+.class_select:has(a.indigo):hover, .class_select:has(a.indigo).selected { 
+    background-color: #504694; 
+}
+.class_select:has(a.charcoal):hover, .class_select:has(a.charcoal).selected { 
+    background-color: #4d4d4d; 
+}
+
+/* The Elite & Clerical Palette */
+.class_select:has(a.clay):hover, .class_select:has(a.clay).selected { 
+    background-color: #d47e61; 
+}
+.class_select:has(a.mint):hover, .class_select:has(a.mint).selected { 
+    background-color: #a0d1b9; 
+}
+.class_select:has(a.violet):hover, .class_select:has(a.violet).selected { 
+    background-color: #8c61b5; 
+}
+.class_select:has(a.ochre):hover, .class_select:has(a.ochre).selected { 
+    background-color: #c49237; 
+}
+
+/* Juggernaut Slot (Black) */
+.class_select:has(a.black):hover, .class_select:has(a.black).selected { 
+    background-color: #444444; 
+    border: 1px solid #ffffff; /* Give the black slot a white border so it glows */
+}
+
 #tap_to_play_button {
     padding: 14px 0px;
 	width: 100%;
