@@ -228,6 +228,17 @@ button:disabled {
     border: 1px solid #ffffff; /* Give the black slot a white border so it glows */
 }
 
+.class_select.locked {
+    background-color: #2b2b2b;
+    border: 1px dashed #505050;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.class_select.locked:hover {
+    background-color: #2b2b2b; /* No glow for locked classes */
+}
+
 #tap_to_play_button {
     padding: 14px 0px;
 	width: 100%;

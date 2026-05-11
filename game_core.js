@@ -1,5 +1,12 @@
 //global variables
 var battle_field = [1,1,1,1,1,2,2,2,2,2]; // 1 is player 2 is enemy territory
+var unlockedClasses = [
+    true,  true,  false, false, false, false, // Row 1
+    false, false, false, false, false, false, // Row 2
+    false, false, false, false, false, false, // Row 3
+    false, false, false, false, false, false, // Row 4
+    false, false, false, false, false, false  // Row 5
+];
 var classes = [
     "Hooman", "Fighter", "Alchemist", "Theologian", "Ranger", 
     "Monk", "Knight", "Troubadour", "Artillerist", "Cuirassier", 
@@ -137,6 +144,7 @@ function Hud(comand){
     if(comand == 1) {
         //class selecter is a new game
 		document.getElementById("rooster").style.display = "block";
+		renderClassTable();
     }
 
     if(comand == 2) {
@@ -176,6 +184,47 @@ function Hud(comand){
     if(comand == 9) {
         //the end of the game.
     }
+}
+
+function renderClassTable() {
+	document.getElementById("class_selection_container").innerHTML = "";
+	
+    let tableHtml = '<table style="margin: auto; text-align: center;"><tr>';
+    let cols = 6;
+
+    for (let i = 0; i < 30; i++) {
+        // If we hit 6 columns, start a new row
+        if (i > 0 && i % cols === 0) {
+            tableHtml += '</tr><tr>';
+        }
+
+        if (unlockedClasses[i]) {
+            // UNLOCKED: Show the class icon and color
+            let color = class_colors[i];
+            tableHtml += `<td><button data-class-num="${i}" class="class_select" onclick="class_selection(${i}, this)"><a class="icns ${color}">@</a></button></td>`;
+        } else {
+            // LOCKED: Show a grayed out question mark or padlock
+            tableHtml += `<td><button class="class_select locked" disabled><a class="icns dark_gray">@</a></button></td>`;
+        }
+    }
+
+    tableHtml += '</tr></table>';
+    document.getElementById("class_selection_container").innerHTML = tableHtml;
+}
+
+function unlockNextClass() {
+    for (let i = 0; i < unlockedClasses.length; i++) {
+        if (unlockedClasses[i] === false) {
+            unlockedClasses[i] = true;
+            console.log("New Class Unlocked: " + classes[i]);
+            break; // Only unlock one per win
+        }
+    }
+}
+
+function cheatUnlockAll() {
+    unlockedClasses = new Array(30).fill(true);
+    renderClassTable();
 }
 
 function class_selection(class_num, button_element) {
