@@ -1,5 +1,23 @@
 //global variables
-var battle_field = [1,1,1,1,1,2,2,2,2,2]; // 1 is player 2 is enemy territory
+var is_dev = 1;
+
+
+var enemy_nme = ["Ghost","Glarb","Serpant","Golem","Skeleton","Toad","Blob","Ember","Goblin"];
+var enemy_hth = [3,4,3,8,4,2,2,2,4];
+var enemy_dmg = [3,4,4,6,3,2,4,4,3];
+var enemy_arm = [1,2,2,3,1,1,2,1,2];
+var enemy_icn = ["&","?","!",".",",","+",";","=","\x5C"];
+var enemy_clr = ["white","green","lime","gray","white","olive","purple","orange","green"];
+
+var enemy_type = 0;
+
+var enemy = {
+    name: "",
+    health: 0,
+    max_health: 0,
+    status: "Normal"
+};
+
 var unlockedClasses = [
     true,  true,  false, false, false, false, // Row 1
     false, false, false, false, false, false, // Row 2
@@ -7,6 +25,7 @@ var unlockedClasses = [
     false, false, false, false, false, false, // Row 4
     false, false, false, false, false, false  // Row 5
 ];
+
 var classes = [
     "Hooman", "Fighter", "Alchemist", "Theologian", "Ranger", 
     "Monk", "Knight", "Troubadour", "Artillerist", "Cuirassier", 
@@ -15,6 +34,7 @@ var classes = [
     "Highlander", "Musketeer", "Fletcher", "Cardinal", "Highwayman", 
     "Blacksmith", "Executioner", "Oracle", "Ochre Guard", "Juggernaut"
 ];
+
 var class_health = [
     0, 15, 8, 15, 12, 10, 17, 12, 10, 16, 
     12, 14, 11, 13, 10, 13, 9, 14, 10, 15, 
@@ -69,6 +89,7 @@ var class_unique_shield = [
     "None", "None", "None", "None", "None", 
     "None", "None", "Pavise", "Built-in Shield"
 ];
+
 var class_data = {
     1: { name: "Fighter", description: "High Health/Strength (Tank)" },
     2: { name: "Alchemist", description: "Pure Academic (Glass Cannon)" },
@@ -115,12 +136,14 @@ var player = {
     dmg: 20,   
     arm: 10, 
 	inv: {
+        gold: 0,
 		pot_lvl: 0,
 		pot_health: 0,
 		pot_poison: 0,
-		pot_strength: 0,
 		pot_armor: 0,
-		pot_damage: 0
+		pot_damage: 0,
+        pot_speed: 0,
+        pot_smoke: 0
 	}
 };
 
@@ -144,7 +167,11 @@ function Hud(comand){
     if(comand == 1) {
         //class selecter is a new game
 		document.getElementById("rooster").style.display = "block";
-		renderClassTable();
+        if(is_dev == 0) {
+		    renderClassTable();
+        } else {
+            cheatUnlockAll();
+        }
     }
 
     if(comand == 2) {
@@ -267,6 +294,22 @@ function class_selection(class_num, button_element) {
 }
 	
 function Battle(){
+    /* 
+    enemy_type = Math.floor(Math.random() * enemy_nme.length);
+            
+            let base_hp = enemy_hth[enemy_type];
+            let scaled_hp = base_hp + (rooms_cleared * 5); 
+
+            enemy = {
+                name: enemy_nme[enemy_type],
+                hp: scaled_hp,
+                max_hp: scaled_hp,
+                dmg: enemy_dmg[enemy_type] + Math.floor(rooms_cleared / 2),
+                arm: enemy_arm[enemy_type],
+                icon: enemy_icn[enemy_type],
+                color: enemy_clr[enemy_type]
+            };
+     */
 	if(combat == 1) {
 			
 		if( plyr_points != 5 && enmy_points	!= 5) {
