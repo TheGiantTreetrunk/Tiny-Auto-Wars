@@ -19,8 +19,10 @@
 
 body {
     color: #ffffff;
-    background-color: #000000;
+    background-color: #7c142c;
 	font-family: 'main';
+    border: 8px solid #9c6b65;
+    border-style: dashed;
 }
 
 
@@ -72,6 +74,38 @@ button:disabled {
 /*TERMINAL COLORS!!!!!!*/
 .door {
     font-family: 'Game_Icns';
+}
+
+.bazzar_red {
+    color: #7c142c;
+}
+
+.clay_red {
+    color: #542b29;
+}
+
+.bazzar_brown {
+    color: #5f3426;
+}
+
+.stone_gray {
+    color: #9a9a8e;
+}
+
+.gravel_gray {
+    color: #9c6b65;
+}
+
+.grimestone_gray {
+    color: #505050;
+}
+
+.flint_gray {
+    color: #787878;
+}
+
+.limestone_gray {
+    color: #9f9f9f;
 }
 
 .black {
