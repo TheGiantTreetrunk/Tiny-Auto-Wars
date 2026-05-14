@@ -108,6 +108,46 @@ button:disabled {
     color: #9f9f9f;
 }
 
+.burrage_1 {
+    color: 	#7f3004;
+}
+
+.burrage_2 {
+    color: #cf763b;
+}
+
+.burrage_3 {
+    color: #b4901e;
+}
+
+.burrage_4 {
+    color: 	#8d8638;
+}
+
+.burrage_5 {
+    color: 	#7a665d;
+}
+
+.med_blk_1 {
+    color: #2a2a2b;
+}
+
+.med_blk_1 {
+    color: #373838;
+}
+
+.med_blk_1 {
+    color: #444548;
+}
+
+.med_blk_1 {
+    color: #45494d;
+}
+
+.med_blk_1 {
+    color: #414141;
+}
+
 .black {
 	color: #000000;
 }
@@ -330,7 +370,21 @@ button:disabled {
     height: auto;
     max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
     overflow-y: auto; /* Adds scroll if the inventory gets huge */
-    background-color: #000; /* Ensures it masks the background */
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 100; /* Keeps it above the dungeon floor */
+}
+
+#rooster {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    height: auto;
+    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
+    overflow-y: auto; /* Adds scroll if the inventory gets huge */
     padding: 15px;
     box-sizing: border-box;
     z-index: 100; /* Keeps it above the dungeon floor */
