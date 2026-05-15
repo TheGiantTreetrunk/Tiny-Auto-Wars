@@ -158,9 +158,11 @@ function Hud(comand){
 	document.getElementById("htp").style.display = "none";
 	document.getElementById("rooster").style.display = "none";
 	document.getElementById("store_front").style.display = "none";
+    document.getElementById("bazzar").style.display = "none";
 
     if(comand == 0) {
         //start
+        document.body.classList.add('body_class_main_menu');
 		document.getElementById("mm").style.display = "block";
     }
 
@@ -182,9 +184,17 @@ function Hud(comand){
     if(comand == 3) {
         //pre battle prep
 		if(player.class != 0) {
-			document.getElementById("store_front").style.display = "block";
+            document.getElementById("rooster").style.display = "block";
+            toggleFade();
+            setTimeout(toggleFade, 2000);
+            setTimeout(function(){ document.getElementById("rooster").style.display = "none" }, 1200);
+            setTimeout(function(){ document.getElementById("store_front").style.display = "block" }, 1500);
+            setTimeout(function(){ document.body.classList.remove('body_class_main_menu'); }, 1500);
+            setTimeout(function(){ document.body.classList.add('body_class_hut'); }, 1500);
 		} else {
+            
 			document.getElementById("rooster").style.display = "block";
+
 		}
     }
 
@@ -445,4 +455,8 @@ function Battle(){
 			
 		}
 	} 
+}
+
+function toggleFade() {
+  document.getElementById('fadeElement').classList.toggle('fade-out');
 }

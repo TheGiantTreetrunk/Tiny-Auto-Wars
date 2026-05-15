@@ -19,12 +19,34 @@
 
 body {
     color: #ffffff;
+}
+.body_class_main_menu {
+    background-color: #2a2a2b;
+	font-family: 'main';
+    border: 8px solid #45494d;
+    border-style: dashed;
+}
+
+.body_class_hut {
+    background-color: #7f3004;
+	font-family: 'main';
+    border: 8px solid #cf763b;
+    border-style: dashed;
+}
+
+.body_class_bazzar {
     background-color: #7c142c;
 	font-family: 'main';
     border: 8px solid #9c6b65;
     border-style: dashed;
 }
 
+.body_class_battle {
+    background-color: #7c142c;
+	font-family: 'main';
+    border: 8px solid #9c6b65;
+    border-style: dashed;
+}
 
 img {
 	image-rendering: pixelated;
@@ -132,19 +154,19 @@ button:disabled {
     color: #2a2a2b;
 }
 
-.med_blk_1 {
+.med_blk_2 {
     color: #373838;
 }
 
-.med_blk_1 {
+.med_blk_3 {
     color: #444548;
 }
 
-.med_blk_1 {
+.med_blk_4 {
     color: #45494d;
 }
 
-.med_blk_1 {
+.med_blk_5 {
     color: #414141;
 }
 
@@ -387,7 +409,22 @@ button:disabled {
     overflow-y: auto; /* Adds scroll if the inventory gets huge */
     padding: 15px;
     box-sizing: border-box;
-    z-index: 100; /* Keeps it above the dungeon floor */
+    z-index: 1; /* Keeps it above the dungeon floor */
+}
+
+#bazzar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    height: auto;
+    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
+    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 1; /* Keeps it above the dungeon floor */
 }
 
 #class_icon {
@@ -483,4 +520,20 @@ button:disabled {
 .class_select:has(a.white):hover,
 .class_select:has(a.white).selected {
     background-color: #e0e0e0;
+}
+
+#fadeElement {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    z-index: 3;
+    pointer-events: none;
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* Controls speed and smoothness */
+}
+.fade-out {
+  opacity: 0 !important; /* Forces the element to become transparent */
 }
