@@ -1,6 +1,6 @@
 //global variables
 var is_dev = 1;
-
+var day = 0;
 
 var enemy_nme = ["Ghost","Glarb","Serpant","Golem","Skeleton","Toad","Blob","Ember","Goblin"];
 var enemy_hth = [3,4,3,8,4,2,2,2,4];
@@ -191,6 +191,7 @@ function Hud(comand){
             setTimeout(function(){ document.getElementById("store_front").style.display = "block" }, 1500);
             setTimeout(function(){ document.body.classList.remove('body_class_main_menu'); }, 1500);
             setTimeout(function(){ document.body.classList.add('body_class_hut'); }, 1500);
+            setTimeout(Hud(4), 1750);
 		} else {
             
 			document.getElementById("rooster").style.display = "block";
@@ -199,7 +200,24 @@ function Hud(comand){
     }
 
     if(comand == 4) {
-        //the map radar
+        //when just loading the tavern in general...
+
+        var selected_class = class_data[player.class];
+        var selectedColorClass = class_colors[player.class]; 
+
+        document.getElementById("name_of_class1").innerHTML = selected_class.name.toUpperCase();
+        document.getElementById("tavern_day").innerHTML = "Day " + day;
+        
+        document.getElementById("class_icon1").innerHTML = `<a class='icns ${selectedColorClass}'>@</a>`;
+        
+        let gearInfo = `<br><span style='font-size:10px; color:#888;'>WEAPON: ${class_unique_weapon[player.class]}<br>
+                        ARMOR: ${class_unique_armor[player.class]}</span>`;
+
+        document.getElementById("class_stats1").innerHTML = `
+            <a class='red icns'>~</a> ${class_health[player.class]} 
+            <a class='yellow icns'>$</a> ${class_damage[player.class]} 
+            <a class='purple icns'>%</a> ${class_armor[player.class]}
+            ${gearInfo}`;
     }
 
     if(comand == 5) {

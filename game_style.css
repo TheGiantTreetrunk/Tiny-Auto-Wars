@@ -179,7 +179,7 @@ button:disabled {
 }
 
 .red {
-	color: #883232;
+	color: #ff0000;
 }
 
 .cyan {
@@ -427,7 +427,26 @@ button:disabled {
     z-index: 1; /* Keeps it above the dungeon floor */
 }
 
+#store_front {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    height: auto;
+    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
+    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 1; /* Keeps it above the dungeon floor */
+}
+
 #class_icon {
+    font-size: 24px;
+}
+
+#class_icon1 {
     font-size: 24px;
 }
 
@@ -536,4 +555,36 @@ button:disabled {
 }
 .fade-out {
   opacity: 0 !important; /* Forces the element to become transparent */
+}
+
+table.tavern {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td.tavern, th.tavern {
+  border: 4px solid #b4901e;
+  padding: 8px;
+  background-color: #8d8638;
+}
+
+button.tavern {
+	background-color: #8d8638;
+	color: #ffffff;
+	border: 2px solid #b4901e;
+
+  font-family: 'main';
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+  
+button.tavern:hover {
+	background-color: #b4901e;
+	color: #ffffff;
+  	border: 2px solid #8d8638;
 }
