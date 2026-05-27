@@ -18,108 +18,62 @@ var enemy = {
     status: "Normal"
 };
 
+// Progress Tracking: Starts with only Hooman (0) and Fighter (1) unlocked.
+// Win a campaign to sequentially flip the next 'false' to 'true'.
 var unlockedClasses = [
-    true,  true,  false, false, false, false, // Row 1
-    false, false, false, false, false, false, // Row 2
-    false, false, false, false, false, false, // Row 3
-    false, false, false, false, false, false, // Row 4
-    false, false, false, false, false, false  // Row 5
+    true,  true,  false, false, 
+    false, false, false, false
 ];
 
 var classes = [
-    "Hooman", "Fighter", "Alchemist", "Theologian", "Ranger", 
-    "Monk", "Knight", "Troubadour", "Artillerist", "Cuirassier", 
-    "Duelist", "Dragoon", "Privateer", "Inquisitor", "Sapper", 
-    "Mariner", "Plague Doc", "Grenadier", "Spy", "Pikeman", 
-    "Highlander", "Musketeer", "Fletcher", "Cardinal", "Highwayman", 
-    "Blacksmith", "Executioner", "Oracle", "Ochre Guard", "Juggernaut"
+    "Hooman",       // 0: Entry Baseline
+    "Fighter",      // 1: Balanced Front Line Tank
+    "Knight",       // 2: Heavily Armored Juggernaut-Lite
+    "Alchemist",    // 3: High-Damage Academic Glass Cannon
+    "Theologian",   // 4: High-Health Defensive Support
+    "Ranger",       // 5: High-Speed Critical Vanguard
+    "Artillerist",  // 6: Pure Firepower Explosive Vanguard
+    "Juggernaut"    // 7: Ultimate Campaign Mastery Unlock
 ];
 
-var class_health = [
-    0, 15, 8, 15, 12, 10, 17, 12, 10, 16, 
-    12, 14, 11, 13, 10, 13, 9, 14, 10, 15, 
-    18, 12, 10, 14, 11, 16, 14, 8, 15, 25
-];
-
-var class_damage = [
-    0, 6, 6, 3, 4, 3, 6, 3, 8, 7, 
-    7, 5, 6, 5, 9, 6, 4, 8, 8, 4, 
-    7, 7, 5, 3, 8, 5, 9, 4, 4, 5
-];
-
-var class_armor = [
-    0, 12, 0, 8, 5, 3, 18, 8, 5, 15, 
-    4, 10, 6, 12, 3, 7, 6, 11, 2, 14, 
-    8, 8, 5, 10, 4, 12, 4, 0, 16, 22
-];
-
+// High-visibility neon color profiles to pop off your dark #542b29 background
 var class_colors = [
-    "white", "red", "blue", "brown", "green", 
-    "yellow", "purple", "cyan", "magenta", "pink", 
-    "lime", "dark_gray", "light_gray", "dark_brown", "gray", 
-    "navy", "olive", "copper", "slate", "teal", 
-    "burgundy", "gold", "forest", "indigo", "charcoal", 
-    "clay", "mint", "violet", "ochre", "black"
+    "white",        // Hooman
+    "red",          // Fighter (Neon Crimson)
+    "purple",       // Knight (Electric Violet)
+    "blue",         // Alchemist (Cyber Cyan/Blue)
+    "lime",         // Theologian (Acid Lime Green)
+    "yellow",       // Ranger (Sonic Lemon Yellow)
+    "magenta",      // Artillerist (Radioactive Hot Pink)
+    "black"         // Juggernaut (Void Core / High-Contrast Inverted Aura)
 ];
 
-//stats for nerds
+// Balanced Role Statistics: [Health, Damage, Armor]
+var class_health = [0, 15, 18, 8,  15, 12, 10, 25];
+var class_damage = [0, 6,  5,  7,  3,  5,  9,  5];
+var class_armor  = [0, 12, 18, 0,  8,  5,  3,  22];
+
+// Unique Equipment Configurations
 var class_unique_weapon = [
-    "None", "Zweihandler", "Musket", "Mace", "Long Bow", "Quarterstaff", 
-    "Long Sword", "Rapier", "Rifle", "Pistol & Sabre", "Main Gauche", 
-    "Carbine", "Cutlass", "Executioner Sword", "Grenades", "Harpoon", 
-    "Plague Staff", "Mortar", "Stiletto", "Pike", "Claymore", 
-    "Flintlock", "Recurve Bow", "Censer", "Blunderbuss", "War Hammer", 
-    "Heavy Axe", "Crystal Ball", "Halberd", "Steam Cannon"
+    "None", "Zweihandler", "Long Sword", "Chemicals", "Mace", "Long Bow", "Mortar", "Steam Cannon"
 ];
 
 var class_unique_armor = [
-    "None", "Field Plate", "Simple Clothes", "Brigandine", "Leather Coat", "Padded Gambeson", 
-    "Gothic Plate", "Mail Hauberk", "Leather Coat", "Breastplate", "Silk Doublet", 
-    "Buff Coat", "Canvas Tunic", "Heavy Leathers", "Apron", "Oilskins", 
-    "Bird Mask & Robes", "Heavy Canvas", "Dark Cloak", "Breastplate", "Kilt & Mail", 
-    "Uniform", "Linothorax", "Vestments", "Rugged Leathers", "Apron & Chain", 
-    "Hooded Robes", "Ceremonial Silk", "Polished Steel", "Fortress Plate"
+    "None", "Field Plate", "Gothic Plate", "Simple Clothes", "Brigandine", "Leather Coat", "Heavy Canvas", "Fortress Plate"
 ];
 
 var class_unique_shield = [
-    "None", "None", "None", "Heater", "None", "None", 
-    "Kite", "Buckler", "None", "None", "None", 
-    "None", "None", "None", "None", "None", 
-    "None", "None", "None", "None", "None", 
-    "None", "None", "None", "None", "None", 
-    "None", "None", "Pavise", "Built-in Shield"
+    "None", "None", "Kite", "None", "Heater", "None", "None", "Built-in Shield"
 ];
 
 var class_data = {
-    1: { name: "Fighter", description: "High Health/Strength (Tank)" },
-    2: { name: "Alchemist", description: "Pure Academic (Glass Cannon)" },
-    3: { name: "Theologian", description: "Balanced Support" },
-    4: { name: "Ranger", description: "Balanced Skirmisher" },
-    5: { name: "Monk", description: "Pure Mobility (Evasion)" },
-    6: { name: "Knight", description: "Durable Tank (Health/Strength)" },
-    7: { name: "Troubadour", description: "Jack of All Trades" },
-    8: { name: "Artillerist", description: "Focused Academic, Frail" },
-	9:  { name: "Cuirassier", description: "Armored Cavalry (Heavy Front Liner)" },
-    10: { name: "Duelist", description: "Precision Striker (High Damage Vanguard)" },
-    11: { name: "Dragoon", description: "Versatile Raider (Hybrid Skirmisher)" },
-    12: { name: "Privateer", description: "Opportunistic Mercenary (Vanguard)" },
-    13: { name: "Inquisitor", description: "Fearless Enforcer (Durable Support)" },
-    14: { name: "Sapper", description: "Demolitions Expert (Extreme Vanguard)" },
-    15: { name: "Mariner", description: "Seafaring Brawler (Front Liner)" },
-    16: { name: "Plague Doc", description: "Debuff Specialist (Technical Support)" },
-    17: { name: "Grenadier", description: "Heavy Explosives (Sturdy Front Liner)" },
-    18: { name: "Spy", description: "Infiltration Expert (High Risk Vanguard)" },
-    19: { name: "Pikeman", description: "Anti-Cavalry (Stable Front Liner)" },
-    20: { name: "Highlander", description: "Ferocious Warrior (Aggressive Front Liner)" },
-    21: { name: "Musketeer", description: "Line Infantry (Reliable Vanguard)" },
-    22: { name: "Fletcher", description: "Ammo Supplier (Resource Support)" },
-    23: { name: "Cardinal", description: "Holy Strategist (Leadership Support)" },
-    24: { name: "Highwayman", description: "Ambush Expert (Speed Vanguard)" },
-    25: { name: "Blacksmith", description: "Equipment Maintenance (Armor Support)" },
-    26: { name: "Executioner", description: "Final Blow Specialist (Heavy Vanguard)" },
-    27: { name: "Oracle", description: "Frail Seer (Vision/Roll Support)" },
-    28: { name: "Ochre Guard", description: "Desert Sentry (Reliable Front Liner)" },
-    29: { name: "Juggernaut", description: "Ultimate Anchor (Legendary Front Liner)" }
+    1: { name: "Fighter", description: "High Health/Strength (Balanced Tank)" },
+    2: { name: "Knight", description: "Durable Tank (Maximum Armor & Shielding)" },
+    3: { name: "Alchemist", description: "Pure Academic (High Damage Glass Cannon)" },
+    4: { name: "Theologian", description: "Durable Backline Support & Protector" },
+    5: { name: "Ranger", description: "Precision Striker (Speed & High Criticals)" },
+    6: { name: "Artillerist", description: "Focused Heavy Firepower (Frail Vanguard)" },
+    7: { name: "Juggernaut", description: "Ultimate Anchor (Legendary Campaign Reward)" }
 };
 
 //battlefield variables
@@ -144,7 +98,13 @@ var player = {
 		pot_damage: 0,
         pot_speed: 0,
         pot_smoke: 0
-	}
+	},
+
+    hut: {
+        lvl: 1,
+        food: 3,
+        water: 3
+    }
 };
 
 
@@ -158,7 +118,6 @@ function Hud(comand){
 	document.getElementById("htp").style.display = "none";
 	document.getElementById("rooster").style.display = "none";
 	document.getElementById("store_front").style.display = "none";
-    document.getElementById("bazzar").style.display = "none";
 
     if(comand == 0) {
         //start
@@ -245,9 +204,9 @@ function renderClassTable() {
 	document.getElementById("class_selection_container").innerHTML = "";
 	
     let tableHtml = '<table style="margin: auto; text-align: center;"><tr>';
-    let cols = 6;
+    let cols = 3;
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 8; i++) {
         // If we hit 6 columns, start a new row
         if (i > 0 && i % cols === 0) {
             tableHtml += '</tr><tr>';
@@ -476,5 +435,13 @@ function Battle(){
 }
 
 function toggleFade() {
-  document.getElementById('fadeElement').classList.toggle('fade-out');
+    document.getElementById('fadeElement').classList.toggle('fade-out');
+}
+
+function toggleAppPopup() {
+    document.getElementById('tavern').classList.toggle('active');
+}
+
+function toggleAppPopup1() {
+    document.getElementById('bazzar').classList.toggle('active');
 }
