@@ -1,6 +1,7 @@
 //global variables
 var is_dev = 1;
 var day = 0;
+var distance = 0;
 
 var enemy_nme = ["Ghost","Glarb","Serpant","Golem","Skeleton","Toad","Blob","Ember","Goblin"];
 var enemy_hth = [3,4,3,8,4,2,2,2,4];
@@ -18,11 +19,8 @@ var enemy = {
     status: "Normal"
 };
 
-// Progress Tracking: Starts with only Hooman (0) and Fighter (1) unlocked.
-// Win a campaign to sequentially flip the next 'false' to 'true'.
 var unlockedClasses = [
-    true,  true,  false, false, 
-    false, false, false, false
+    true, true, false, false, false, false, false
 ];
 
 var classes = [
@@ -32,39 +30,21 @@ var classes = [
     "Alchemist",    // 3: High-Damage Academic Glass Cannon
     "Theologian",   // 4: High-Health Defensive Support
     "Ranger",       // 5: High-Speed Critical Vanguard
-    "Artillerist",  // 6: Pure Firepower Explosive Vanguard
-    "Juggernaut"    // 7: Ultimate Campaign Mastery Unlock
+    "Artillerist"   // 6: Pure Firepower Explosive Vanguard
 ];
 
-// High-visibility neon color profiles to pop off your dark #542b29 background
 var class_colors = [
-    "white",        // Hooman
-    "red",          // Fighter (Neon Crimson)
-    "purple",       // Knight (Electric Violet)
-    "blue",         // Alchemist (Cyber Cyan/Blue)
-    "lime",         // Theologian (Acid Lime Green)
-    "yellow",       // Ranger (Sonic Lemon Yellow)
-    "magenta",      // Artillerist (Radioactive Hot Pink)
-    "black"         // Juggernaut (Void Core / High-Contrast Inverted Aura)
+    "white", "red", "purple", "blue", "lime", "yellow", "magenta"
 ];
 
-// Balanced Role Statistics: [Health, Damage, Armor]
-var class_health = [0, 15, 18, 8,  15, 12, 10, 25];
-var class_damage = [0, 6,  5,  7,  3,  5,  9,  5];
-var class_armor  = [0, 12, 18, 0,  8,  5,  3,  22];
+// Base stats (Representing Level 1 Tiers)
+var class_health = [0, 15, 18, 8,  15, 12, 10];
+var class_damage = [0, 6,  5,  7,  3,  5,  9];
+var class_armor  = [0, 12, 18, 0,  8,  5,  3];
 
-// Unique Equipment Configurations
-var class_unique_weapon = [
-    "None", "Zweihandler", "Long Sword", "Chemicals", "Mace", "Long Bow", "Mortar", "Steam Cannon"
-];
-
-var class_unique_armor = [
-    "None", "Field Plate", "Gothic Plate", "Simple Clothes", "Brigandine", "Leather Coat", "Heavy Canvas", "Fortress Plate"
-];
-
-var class_unique_shield = [
-    "None", "None", "Kite", "None", "Heater", "None", "None", "Built-in Shield"
-];
+var class_unique_weapon = ["None", "Zweihandler", "Long Sword", "Chemicals", "Mace", "Long Bow", "Mortar"];
+var class_unique_armor  = ["None", "Field Plate", "Gothic Plate", "Simple Clothes", "Brigandine", "Leather Coat", "Heavy Canvas"];
+var class_unique_shield = ["None", "None", "Kite", "None", "Heater", "None", "None"];
 
 var class_data = {
     1: { name: "Fighter", description: "High Health/Strength (Balanced Tank)" },
@@ -72,8 +52,7 @@ var class_data = {
     3: { name: "Alchemist", description: "Pure Academic (High Damage Glass Cannon)" },
     4: { name: "Theologian", description: "Durable Backline Support & Protector" },
     5: { name: "Ranger", description: "Precision Striker (Speed & High Criticals)" },
-    6: { name: "Artillerist", description: "Focused Heavy Firepower (Frail Vanguard)" },
-    7: { name: "Juggernaut", description: "Ultimate Anchor (Legendary Campaign Reward)" }
+    6: { name: "Artillerist", description: "Focused Heavy Firepower (Frail Vanguard)" }
 };
 
 //battlefield variables
@@ -103,10 +82,12 @@ var player = {
     hut: {
         lvl: 1,
         food: 3,
-        water: 3
+        water: 3,
+        wood: 0,
+        stone: 0,
+        iron: 0,
     }
 };
-
 
 setInterval(function () {Battle()}, 1500);
 var combat = 0;//0 = peace time 1 = war time
@@ -206,7 +187,7 @@ function renderClassTable() {
     let tableHtml = '<table style="margin: auto; text-align: center;"><tr>';
     let cols = 3;
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
         // If we hit 6 columns, start a new row
         if (i > 0 && i % cols === 0) {
             tableHtml += '</tr><tr>';
@@ -438,10 +419,34 @@ function toggleFade() {
     document.getElementById('fadeElement').classList.toggle('fade-out');
 }
 
-function toggleAppPopup() {
-    document.getElementById('tavern').classList.toggle('active');
-}
+// Dynamic stat generator linked directly to player.lvl
+function updatePlayerStats() {
+    var classIndex = player.class;
+    var level = player.lvl;
 
-function toggleAppPopup1() {
-    document.getElementById('bazzar').classList.toggle('active');
+    // Safety check for level out of bounds
+    if (level < 1) level = 1;
+    if (level > 3) level = 3;
+
+    // Grab Base Stats from your arrays
+    var baseHp  = class_health[classIndex];
+    var baseDmg = class_damage[classIndex];
+    var baseArm = class_armor[classIndex];
+
+    // Overwrite the actual player properties directly based on tier level
+    if (level === 1) {
+        player.hp  = baseHp;
+        player.dmg = baseDmg;
+        player.arm = baseArm;
+    } 
+    else if (level === 2) {
+        player.hp  = Math.ceil(baseHp * 1.5);
+        player.dmg = Math.ceil(baseDmg * 1.5);
+        player.arm = Math.ceil(baseArm * 1.5);
+    } 
+    else if (level === 3) {
+        player.hp  = baseHp * 2;
+        player.dmg = baseDmg * 2;
+        player.arm = baseArm * 2;
+    }
 }

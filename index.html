@@ -63,7 +63,7 @@
 
             <table class="tavern" style="margin-left: auto; margin-right: auto; text-align: center;">
                 <tr class="tavern">
-                    <td class="tavern"><a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 0, 200);">/</a><br><a id="gold_total">10</a></td>
+                    <td class="tavern"><a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 0, 200);">/</a><br><a id="gold_total">1</a></td>
                     <td class="tavern"><a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 0, 0);"><</a><br><a id="gold_total">10</a></td>
                     <td class="tavern"><a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(119, 0, 255);"><</a><br><a id="gold_total">10</a></td>
                     <td class="tavern"><a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 230, 0);"><</a><br><a id="gold_total">10</a></td>
@@ -80,117 +80,20 @@
             
             <table style="margin-left: auto; margin-right: auto;">
                 <tr>
-                    <th><button class="tavern" onclick="toggleAppPopup1()">Bazzar</button></th>
+                    <th><button class="tavern" onclick="">Bazzar</button></th>
                     <th><button class="tavern">Battle!</button></th>
-                    <th><button class="tavern" onclick="toggleAppPopup()">Tavern</button></th>
+                    <th><button class="tavern" onclick="">Tavern</button></th>
                 </tr>
             </table>
 
         </div>
+        
 
-            <div class="minimal-popup" id="tavern">
-                <div class="minimal-popup-content">
-                    <h2>Local Bazzar</h2>
-            <table>
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px; align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 136, 0);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">DMG POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px; align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 0, 0);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">HTH POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px; align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(119, 0, 255);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">ARM POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px; align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(255, 230, 0);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">LVL POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px;  align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(30, 255, 0);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">POI POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px;  align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(138, 138, 138);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">SMK POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <button class="class_select" style="border-color: #fff; cursor: default; width: 70px; height: 70px;  align-items: center; justify-content: center;">
-                        <a id="loot_icon" class="icns" style="font-size: 24px; color: rgb(0, 183, 255);"><</a><br>
-                        <span id="loot_item_name" style="font-size: 9px; color: rgb(255, 255, 255); margin-top: 4px; font-family: main;">SPD POTION</span>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-            </table>
-                    <button onclick="toggleAppPopup()">Close</button>
-                </div>
-            </div>
+            
 
 
         <div id="fadeElement" class="fade-out"></div>
-
-                    <div class="minimal-popup" id="bazzar">
-            <div class="minimal-popup-content">
-                <h3>Popup Title</h3>
-                <p>Your content here.</p>
-                <button onclick="toggleAppPopup1()">Close</button>
-            </div>
-            </div>
-
 
         <script>
         document.addEventListener('DOMContentLoaded', () => {

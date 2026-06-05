@@ -234,95 +234,7 @@ button:disabled {
 	color: #9f9f9f;
 }
 
-/* Navy - Mariner (#2d335a) */
-.navy { color: #2d335a; }
-.class_select:has(a.navy):hover, .class_select:has(a.navy).selected { 
-    background-color: #4a5494; 
-}
 
-/* Olive - Plague Doctor (#4a4d2e) */
-.olive { color: #4a4d2e; }
-.class_select:has(a.olive):hover, .class_select:has(a.olive).selected { 
-    background-color: #7b804d; 
-}
-
-/* Copper - Grenadier (#a1683c) */
-.copper { color: #a1683c; }
-.class_select:has(a.copper):hover, .class_select:has(a.copper).selected { 
-    background-color: #d68a50; 
-}
-
-/* Slate - Spy (#4b5d6b) */
-.slate { color: #4b5d6b; }
-.class_select:has(a.slate):hover, .class_select:has(a.slate).selected { 
-    background-color: #7d9bb3; 
-}
-
-.burgundy  { color: #631b1b; } /* Deep Red-Brown */
-.teal      { color: #3b7575; } /* Oxidized Bronze */
-.gold      { color: #9c8e2a; } /* Tarnished Gold */
-.forest    { color: #2e4d23; } /* Hunting Green */
-.indigo    { color: #322b5e; } /* Royal Uniform Blue */
-.charcoal  { color: #2b2b2b; } /* Gunpowder Smoke */
-.clay      { color: #a35d46; } /* Terracotta/Brick */
-.mint      { color: #76a38d; } /* Faded Seafoam */
-.violet    { color: #5a3a7a; } /* Clerical Purple */
-.ochre     { color: #916a24; } /* Leather/Wax */
-
-
-/* Age of Exploration / Nautical Colors */
-.class_select:has(a.navy):hover, .class_select:has(a.navy).selected { 
-    background-color: #4a5494; 
-}
-.class_select:has(a.olive):hover, .class_select:has(a.olive).selected { 
-    background-color: #7b804d; 
-}
-.class_select:has(a.copper):hover, .class_select:has(a.copper).selected { 
-    background-color: #d68a50; 
-}
-.class_select:has(a.slate):hover, .class_select:has(a.slate).selected { 
-    background-color: #7d9bb3; 
-}
-.class_select:has(a.teal):hover, .class_select:has(a.teal).selected { 
-    background-color: #5ba1a1; 
-}
-
-/* Renaissance / Mercenary Palette */
-.class_select:has(a.burgundy):hover, .class_select:has(a.burgundy).selected { 
-    background-color: #9c3535; 
-}
-.class_select:has(a.gold):hover, .class_select:has(a.gold).selected { 
-    background-color: #d1bf3b; 
-}
-.class_select:has(a.forest):hover, .class_select:has(a.forest).selected { 
-    background-color: #4b7d3a; 
-}
-.class_select:has(a.indigo):hover, .class_select:has(a.indigo).selected { 
-    background-color: #504694; 
-}
-.class_select:has(a.charcoal):hover, .class_select:has(a.charcoal).selected { 
-    background-color: #4d4d4d; 
-}
-
-/* The Elite & Clerical Palette */
-.class_select:has(a.clay):hover, .class_select:has(a.clay).selected { 
-    background-color: #d47e61; 
-}
-.class_select:has(a.mint):hover, .class_select:has(a.mint).selected { 
-    background-color: #a0d1b9; 
-}
-.class_select:has(a.violet):hover, .class_select:has(a.violet).selected { 
-    background-color: #8c61b5; 
-}
-.class_select:has(a.ochre):hover, .class_select:has(a.ochre).selected { 
-    background-color: #c49237; 
-}
-
-/* Juggernaut Slot (Black) */
-.class_select:has(a.black):hover, .class_select:has(a.black).selected { 
-    background-color: #444444; 
-    border: 1px solid #ffffff; /* Give the black slot a white border so it glows */
-}
 
 .class_select.locked {
     background-color: #2b2b2b;
@@ -505,36 +417,6 @@ button:disabled {
     background-color: #ff66ff;
 }
 
-/* Cuirassier / Juggernaut - Pink Glow */
-.class_select:has(a.pink):hover,
-.class_select:has(a.pink).selected {
-    background-color: #ff99ff;
-}
-
-/* Dragoon - Steel Glow */
-.class_select:has(a.dark_gray):hover,
-.class_select:has(a.dark_gray).selected {
-    background-color: #808080;
-}
-
-/* Privateer - Silver Glow */
-.class_select:has(a.light_gray):hover,
-.class_select:has(a.light_gray).selected {
-    background-color: #d3d3d3;
-}
-
-/* Inquisitor - Deep Earth Glow */
-.class_select:has(a.dark_brown):hover,
-.class_select:has(a.dark_brown).selected {
-    background-color: #8b5429;
-}
-
-/* Sapper - Industrial Ash Glow */
-.class_select:has(a.gray):hover,
-.class_select:has(a.gray).selected {
-    background-color: #a9a9a9;
-}
-
 /* Hooman - Bright White Glow */
 .class_select:has(a.white):hover,
 .class_select:has(a.white).selected {
@@ -601,20 +483,3 @@ button.tavern:hover {
 	color: #ffffff;
   	border: 4px solid #8d8638;
 }
-
-  .minimal-popup {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); z-index: 9999;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-  }
-  .minimal-popup-content {
-    background: #000; padding: 20px; border-radius: 4px;
-    transform: scale(0.8); transition: transform 0.2s ease;
-    width: 50%;
-    height: 50%;
-    overflow-y: scroll;
-  }
-  .minimal-popup.active { opacity: 1; visibility: visible; }
-  .minimal-popup.active .minimal-popup-content { transform: scale(1); }
