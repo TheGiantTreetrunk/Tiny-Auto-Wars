@@ -24,13 +24,13 @@ var unlockedClasses = [
 ];
 
 var classes = [
-    "Hooman",       // 0: Entry Baseline
-    "Fighter",      // 1: Balanced Front Line Tank
-    "Knight",       // 2: Heavily Armored Juggernaut-Lite
-    "Alchemist",    // 3: High-Damage Academic Glass Cannon
-    "Theologian",   // 4: High-Health Defensive Support
-    "Ranger",       // 5: High-Speed Critical Vanguard
-    "Artillerist"   // 6: Pure Firepower Explosive Vanguard
+    "Hooman",
+    "Fighter",
+    "Knight",
+    "Alchemist",
+    "Theologian",
+    "Ranger",
+    "Artillerist"
 ];
 
 var class_colors = [
@@ -76,17 +76,10 @@ var player = {
 		pot_armor: 0,
 		pot_damage: 0,
         pot_speed: 0,
-        pot_smoke: 0
-	},
-
-    hut: {
-        lvl: 1,
         food: 3,
         water: 3,
-        wood: 0,
-        stone: 0,
-        iron: 0,
-    }
+        wood: 0
+	}
 };
 
 setInterval(function () {Battle()}, 1500);
@@ -146,10 +139,10 @@ function Hud(comand){
         var selectedColorClass = class_colors[player.class]; 
 
         document.getElementById("name_of_class1").innerHTML = selected_class.name.toUpperCase();
-        document.getElementById("tavern_day").innerHTML = "Day " + day;
+        document.getElementById("tavern_day").innerHTML = "Day " + day + "<br>" + "Distance Traveled " + distance + " km";
         
         document.getElementById("class_icon1").innerHTML = `<a class='icns ${selectedColorClass}'>@</a>`;
-        
+        document.getElementById("class_level").innerHTML = "Level " + player.lvl;
         let gearInfo = `<br><span style='font-size:10px; color:#888;'>WEAPON: ${class_unique_weapon[player.class]}<br>
                         ARMOR: ${class_unique_armor[player.class]}</span>`;
 
@@ -158,6 +151,21 @@ function Hud(comand){
             <a class='yellow icns'>$</a> ${class_damage[player.class]} 
             <a class='purple icns'>%</a> ${class_armor[player.class]}
             ${gearInfo}`;
+
+        document.getElementById("gold_total").innerHTML = player.inv.gold;
+        document.getElementById("hth_pot_total").innerHTML = player.inv.gold;
+        document.getElementById("pos_pot_total").innerHTML = player.inv.gold;
+        document.getElementById("arm_pot_total").innerHTML = player.inv.gold;
+
+        document.getElementById("dmg_pot_total").innerHTML = player.inv.gold;
+        document.getElementById("spd_pot_total").innerHTML = player.inv.gold;
+        document.getElementById("food_total").innerHTML = player.inv.gold;
+        document.getElementById("water_total").innerHTML = player.inv.gold;
+
+        document.getElementById("wood_total").innerHTML = player.inv.gold;
+        document.getElementById("steel_total").innerHTML = player.inv.gold;
+        document.getElementById("ruby_total").innerHTML = player.inv.gold;
+        document.getElementById("daimond_total").innerHTML = player.inv.gold;
     }
 
     if(comand == 5) {
@@ -259,160 +267,6 @@ function class_selection(class_num, button_element) {
             <a class='purple icns'>%</a> ${class_armor[class_num]}
             ${gearInfo}`;
     }
-}
-	
-function Battle(){
-    /* 
-    enemy_type = Math.floor(Math.random() * enemy_nme.length);
-            
-            let base_hp = enemy_hth[enemy_type];
-            let scaled_hp = base_hp + (rooms_cleared * 5); 
-
-            enemy = {
-                name: enemy_nme[enemy_type],
-                hp: scaled_hp,
-                max_hp: scaled_hp,
-                dmg: enemy_dmg[enemy_type] + Math.floor(rooms_cleared / 2),
-                arm: enemy_arm[enemy_type],
-                icon: enemy_icn[enemy_type],
-                color: enemy_clr[enemy_type]
-            };
-     */
-	if(combat == 1) {
-			
-		if( plyr_points != 5 && enmy_points	!= 5) {
-			
-			var x1 = 0;
-			var x2 = 0;
-			var i1 = Math.floor(Math.random() * 6) + 1;
-			var i2 = Math.floor(Math.random() * 6) + 1;
-					
-			if(pl_bt_st == 0) {
-				x1 = ((i1 + (ply_atk[enmy_points] + atk_mod)) );//player
-				x2 = ((i2 + (eny_atk[plyr_points] + def_mod)) );//enemy
-			} else {
-				x1 = ((i1 + (ply_atk[enmy_points] + def_mod)) );//player
-				x2 = ((i2 + (eny_atk[plyr_points] + atk_mod)) );//enemy
-			}
-			
-			console.log(x1);
-			console.log(x2);
-			if(x1 > x2){
-				var c = 0;
-					
-				if(pl_bt_st == 0) {
-					if(npc_cls[tm_one[enmy_points]] == 0) {
-						c = ((x1 - x2) + (ply_atk[enmy_points] + atk_mod));
-						eny_hth[plyr_points] -=  c;
-					} else {
-						c = ((x1 - x2) + ply_atk[enmy_points]);
-						eny_hth[plyr_points] -=  c;
-					}
-				} else {
-					if(npc_cls[tm_one[enmy_points]] == 1) {
-						c = ((x1 - x2) + (ply_atk[enmy_points] + def_mod));
-						eny_hth[plyr_points] -=  c;
-					} else {
-						c = ((x1 - x2) + ply_atk[enmy_points]);
-						eny_hth[plyr_points] -=  c;
-					}
-				}
-					
-				if(eny_hth[plyr_points] <= 0){
-					eny_hth[plyr_points] = 0
-					var x4 = eval('sts_' + plyr_points);
-						
-					plyr_points += 1;
-				}
-			}
-				
-			if(x2 > x1) {
-				var d = 0;
-				if(pl_bt_st == 0) {
-					if(npc_cls[tm_two[plyr_points]] == 0) {
-						d = ((x2 - x1) + (eny_atk[plyr_points] + atk_mod));
-						ply_hth[enmy_points] -=  d;
-					} else {
-						d = ((x2 - x1) + eny_atk[plyr_points]);
-						ply_hth[enmy_points] -=  d;
-					}
-				} else {
-					if(npc_cls[tm_two[plyr_points]] == 1) {
-						d = ((x2 - x1) + (eny_atk[plyr_points] + def_mod));
-						ply_hth[enmy_points] -=  d;
-					} else {
-						d = ((x2 - x1) + eny_atk[plyr_points]);
-						ply_hth[enmy_points] -=  d;
-					}
-				}
-					
-				if(ply_hth[enmy_points] <= 0){
-					ply_hth[enmy_points] = 0;
-					var x4 = eval('sts_' + enmy_points);
-					enmy_points += 1;
-						
-				}
-			}
-				
-			if(x1 == x2) {
-				//alert("BLOCKED!");
-			}
-			Team_Loadout(3);
-			Scene(8);
-		} else {
-			if(plyr_points == 5) {
-				//player wina
-				alert("You Win!");
-				combat = 0;
-				nodes_owned += 1;
-				node_map[nodes_owned] = 1;
-				if(nodes_owned >= 10) {
-					alert("You Win the Game!");
-				} else {
-					if(pl_bt_st == 0) {
-						next_off -= 1;
-						//Scene(10);
-					} else {
-						next_rdd -= 1;
-						if(next_rdd == 0) {
-							if(turn_based == true) {
-								next_off = 1;
-							} else {
-								next_off = 3;
-							}
-							//Scene(10);
-						} else {
-							//Scene(12);
-						}
-					}
-				}
-			}
-			if(enmy_points == 5){
-				//enemy wins
-				alert("You Lose!");
-				combat = 0;
-				if(pl_bt_st == 0) {
-					next_off -= 1;
-					//Scene(10);
-				} else {
-					next_rdd -= 1;
-					node_map[nodes_owned] = 2;
-					nodes_owned -= 1;
-					if(next_rdd == 0) {
-						if(turn_based == true) {
-							next_off = 1;
-						} else {
-							next_off = 3;
-						}
-						//Scene(10);
-					} else {
-						//Scene(12);
-					}
-				}
-			}
-			
-		}
-	} 
 }
 
 function toggleFade() {
