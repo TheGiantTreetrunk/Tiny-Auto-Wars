@@ -88,7 +88,7 @@
             <table style="margin-left: auto; margin-right: auto;">
                 <tr>
                     <th><button class="tavern" onclick="">Actions</button></th>
-                    <th><button class="tavern">Embark</button></th>
+                    <th><button class="tavern" onclick="Hud(5)">Embark</button></th>
                     <th><button class="tavern" onclick="">Rest</button></th>
                 </tr>
             </table>
@@ -101,13 +101,14 @@
 
 
         <div id="fadeElement" class="fade-out"></div>
+
         <div id="day_counter_hud">
-            <h3>Day 1</h3>
-            <p>Distance Traveled 1km</p>
+            <h3 id="embark_day_counter">Day 1</h3>
+            <p id="embark_distance_counter">Distance Traveled 1km</p>
 
             <br><br><br>
 
-            <button>Continue</button>
+            <button id="embark_cont_bttn" onclick="Hud(6)">Continue</button>
         </div>
 
         <script>

@@ -42,9 +42,51 @@ body {
 }
 
 .body_class_battle {
-    background-color: #7c142c;
+    background-color: #373838;
 	font-family: 'main';
-    border: 8px solid #9c6b65;
+    border: 8px solid #45494d;
+    border-style: dashed;
+}
+
+.body_class_dominica_garden {
+    background-color: #475c6c;
+	font-family: 'main';
+    border: 8px solid #8a8583;
+    border-style: dashed;
+}
+
+.body_class_arabiana_desert {
+    background-color: #eed7a1;
+	font-family: 'main';
+    border: 8px solid #f7efd3;
+    border-style: dashed;
+}
+
+.body_class_samarsha_swamp {
+    background-color: #a0b023;
+	font-family: 'main';
+    border: 8px solid #a2d01f;
+    border-style: dashed;
+}
+
+.body_class_podzil_woodlands {
+    background-color: #5f3426;
+	font-family: 'main';
+    border: 8px solid #a59075;
+    border-style: dashed;
+}
+
+.body_class_tropicanza_isles {
+    background-color: #76eff2;
+	font-family: 'main';
+    border: 8px solid #feffae;
+    border-style: dashed;
+}
+
+.body_class_farma_flatlands {
+    background-color: #9db055;
+	font-family: 'main';
+    border: 8px solid #f2d662;
     border-style: dashed;
 }
 
@@ -96,78 +138,6 @@ button:disabled {
 /*TERMINAL COLORS!!!!!!*/
 .door {
     font-family: 'Game_Icns';
-}
-
-.bazzar_red {
-    color: #7c142c;
-}
-
-.clay_red {
-    color: #542b29;
-}
-
-.bazzar_brown {
-    color: #5f3426;
-}
-
-.stone_gray {
-    color: #9a9a8e;
-}
-
-.gravel_gray {
-    color: #9c6b65;
-}
-
-.grimestone_gray {
-    color: #505050;
-}
-
-.flint_gray {
-    color: #787878;
-}
-
-.limestone_gray {
-    color: #9f9f9f;
-}
-
-.burrage_1 {
-    color: 	#7f3004;
-}
-
-.burrage_2 {
-    color: #cf763b;
-}
-
-.burrage_3 {
-    color: #b4901e;
-}
-
-.burrage_4 {
-    color: 	#8d8638;
-}
-
-.burrage_5 {
-    color: 	#7a665d;
-}
-
-.med_blk_1 {
-    color: #2a2a2b;
-}
-
-.med_blk_2 {
-    color: #373838;
-}
-
-.med_blk_3 {
-    color: #444548;
-}
-
-.med_blk_4 {
-    color: #45494d;
-}
-
-.med_blk_5 {
-    color: #414141;
 }
 
 .black {

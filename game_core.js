@@ -92,6 +92,7 @@ function Hud(comand){
 	document.getElementById("htp").style.display = "none";
 	document.getElementById("rooster").style.display = "none";
 	document.getElementById("store_front").style.display = "none";
+    document.getElementById("day_counter_hud").style.display = "none";
 
     if(comand == 0) {
         //start
@@ -139,7 +140,7 @@ function Hud(comand){
         var selectedColorClass = class_colors[player.class]; 
 
         document.getElementById("name_of_class1").innerHTML = selected_class.name.toUpperCase();
-        document.getElementById("tavern_day").innerHTML = "Day " + day + "<br>" + "Distance Traveled " + distance + " km";
+        document.getElementById("tavern_day").innerHTML = "Day " + day + "<br>" + "Distance Traveled " + distance + " --km";
         
         document.getElementById("class_icon1").innerHTML = `<a class='icns ${selectedColorClass}'>@</a>`;
         document.getElementById("class_level").innerHTML = "Level " + player.lvl;
@@ -169,11 +170,25 @@ function Hud(comand){
     }
 
     if(comand == 5) {
-        //the event situation pane
+        //embark fade out shit
+            document.getElementById("embark_day_counter").style.display = "none";
+            document.getElementById("embark_distance_counter").style.display = "none";
+            document.getElementById("embark_cont_bttn").style.display = "none";
+            toggleFade();
+            setTimeout(function(){ document.getElementById("store_front").style.display = "none" }, 1200);
+            setTimeout(function(){ document.getElementById("day_counter_hud").style.display = "block" }, 1500);
+            setTimeout(function(){ document.body.classList.remove('body_class_hut'); }, 1500);
+            setTimeout(function(){ document.body.classList.add('body_class_battle'); }, 1500);
+
+            setTimeout(function(){ document.getElementById("embark_day_counter").style.display = "block" }, 1500);
+            setTimeout(function(){ document.getElementById("embark_distance_counter").style.display = "block" }, 2000);
+            setTimeout(function(){ document.getElementById("embark_cont_bttn").style.display = "block" }, 2500);
     }
 
     if(comand == 6) {
         //the shoppe
+        document.getElementById("day_counter_hud").style.display = "none";
+        setTimeout(toggleFade, 2000);
     }
 
     if(comand == 7) {
