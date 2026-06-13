@@ -82,7 +82,6 @@ var player = {
 	}
 };
 
-setInterval(function () {Battle()}, 1500);
 var combat = 0;//0 = peace time 1 = war time
 var plyr_points = 0;
 var enmy_points = 0;
@@ -93,6 +92,7 @@ function Hud(comand){
 	document.getElementById("rooster").style.display = "none";
 	document.getElementById("store_front").style.display = "none";
     document.getElementById("day_counter_hud").style.display = "none";
+    document.getElementById("story_board").style.display = "none";
 
     if(comand == 0) {
         //start
@@ -178,7 +178,7 @@ function Hud(comand){
             setTimeout(function(){ document.getElementById("store_front").style.display = "none" }, 1200);
             setTimeout(function(){ document.getElementById("day_counter_hud").style.display = "block" }, 1500);
             setTimeout(function(){ document.body.classList.remove('body_class_hut'); }, 1500);
-            setTimeout(function(){ document.body.classList.add('body_class_battle'); }, 1500);
+            setTimeout(function(){ document.body.classList.add('body_class_hut'); }, 1500);
 
             setTimeout(function(){ document.getElementById("embark_day_counter").style.display = "block" }, 1500);
             setTimeout(function(){ document.getElementById("embark_distance_counter").style.display = "block" }, 2000);
@@ -189,6 +189,8 @@ function Hud(comand){
         //the shoppe
         document.getElementById("day_counter_hud").style.display = "none";
         setTimeout(toggleFade, 2000);
+        setTimeout(function(){ document.getElementById("story_board").style.display = "block" }, 3500);
+        setTimeout(function(){ document.getElementById("story_board").classList.add('hut'); }, 1500);
     }
 
     if(comand == 7) {

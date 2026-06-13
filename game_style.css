@@ -1,17 +1,16 @@
-/* Add this to the TOP of your CSS to fix all sizing issues */
 * {
     box-sizing: border-box;
 }
 
 @font-face {
-    font-family: 'Game_Icns'; /* Choose a name for your font */
+    font-family: 'Game_Icns';
     font-weight: normal;
     src: url('test.ttf?v=5.00') format('truetype');
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'main'; /* Choose a name for your font */
+    font-family: 'main';
     font-weight: normal;
     src: url(font.otf);
     font-style: normal;
@@ -32,6 +31,11 @@ body {
 	font-family: 'main';
     border: 8px solid #cf763b;
     border-style: dashed;
+}
+
+fieldset.hut{
+        box-shadow: 10px 15px #4d1b00;
+        border: solid #cf763b;
 }
 
 .body_class_bazzar {
@@ -135,7 +139,6 @@ button:disabled {
 
 }
 
-/*TERMINAL COLORS!!!!!!*/
 .door {
     font-family: 'Game_Icns';
 }
@@ -214,7 +217,7 @@ button:disabled {
 }
 
 .class_select.locked:hover {
-    background-color: #2b2b2b; /* No glow for locked classes */
+    background-color: #2b2b2b;
 }
 
 #tap_to_play_button {
@@ -226,16 +229,14 @@ button:disabled {
 .radar-table {
     border-collapse: collapse;
     table-layout: fixed;
-    width: 200px; /* Or whatever width fits your UI */
-    
-    /* This centers the table container itself */
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
 
 }
 
 .radar-table tr {
-    height: 24px;        /* Adjust for desired vertical "scan line" spacing */
+    height: 24px;
 }
 
 .radar-table td {
@@ -244,39 +245,35 @@ button:disabled {
     overflow: hidden;
 }
 
-/* Column 1: "Lvl. X" */
 .radar-table td:nth-child(1) {
     width: 60px;
     text-align: left;
 }
 
-/* Column 2: The Door/Icon */
 .radar-table td:nth-child(2) {
     width: 40px;
     text-align: center;
 }
 
-/* Column 3: The Check/Number */
 .radar-table td:nth-child(3) {
     width: 40px;
     text-align: right;
     padding-right: 5px;
 }
 
-/* Centering the Stats screen to match Menu and Battle */
 #mm {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    max-width: 400px;
     height: auto;
-    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
-    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    max-height: 85vh;
+    overflow-y: auto;
     padding: 15px;
     box-sizing: border-box;
-    z-index: 100; /* Keeps it above the dungeon floor */
+    z-index: 100;
 }
 
 #rooster {
@@ -285,13 +282,13 @@ button:disabled {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    max-width: 400px;
     height: auto;
-    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
-    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    max-height: 85vh;
+    overflow-y: auto;
     padding: 15px;
     box-sizing: border-box;
-    z-index: 1; /* Keeps it above the dungeon floor */
+    z-index: 1;
 }
 
 #bazzar {
@@ -300,13 +297,13 @@ button:disabled {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    max-width: 400px;
     height: auto;
-    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
-    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    max-height: 85vh;
+    overflow-y: auto;
     padding: 15px;
     box-sizing: border-box;
-    z-index: 1; /* Keeps it above the dungeon floor */
+    z-index: 1;
 }
 
 #store_front {
@@ -315,13 +312,13 @@ button:disabled {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px; /* Keeps it from getting too wide on desktop */
+    max-width: 400px;
     height: auto;
-    max-height: 85vh; /* Prevents it from bleeding off the top/bottom */
-    overflow-y: auto; /* Adds scroll if the inventory gets huge */
+    max-height: 85vh;
+    overflow-y: auto;
     padding: 15px;
     box-sizing: border-box;
-    z-index: 1; /* Keeps it above the dungeon floor */
+    z-index: 1;
 }
 
 #class_icon {
@@ -387,7 +384,6 @@ button:disabled {
     background-color: #ff66ff;
 }
 
-/* Hooman - Bright White Glow */
 .class_select:has(a.white):hover,
 .class_select:has(a.white).selected {
     background-color: #e0e0e0;
@@ -403,10 +399,10 @@ button:disabled {
     z-index: 3;
     pointer-events: none;
   opacity: 1;
-  transition: opacity 1s ease-in-out; /* Controls speed and smoothness */
+  transition: opacity 1s ease-in-out;
 }
 .fade-out {
-  opacity: 0 !important; /* Forces the element to become transparent */
+  opacity: 0 !important;
 }
 
 table.tavern {
@@ -467,4 +463,55 @@ button.tavern:hover {
     padding: 15px;
     box-sizing: border-box;
     z-index: 5;
+}
+
+fieldset {
+    position: absolute;
+    min-inline-size: 0;
+    min-width: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80% !important;
+    height: 85vh !important;
+    max-width: none !important; 
+    max-height: 85vh !important; 
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 5px 10px;
+    border: dashed;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.description-section {
+    height: 50%;
+    overflow-y: auto;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.action-section {
+    height: 50%;
+    overflow-y: auto;
+    border-top: 4px dashed #ccc;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.action-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+button.story_board_asset {
+    background-color: #b4901e;
+    color: #ffffff;
+    border: 4px solid #8d8638;
+    width: 100%;
+    margin: 8px 0; 
+    box-sizing: border-box;
+    cursor: pointer;
 }
