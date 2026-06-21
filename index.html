@@ -97,11 +97,13 @@
 
             <fieldset id="story_board">
                 <legend id="story_board_">Encounter Title</legend>
-                <div class="description-section">
+                <div id="inventory-display">Inventory: Empty</div>
+                <br><br>
+                <div class="description-section" id="story-text">
                     <p>This is a test description area. It can contain story text, encounter details, or any other introductory layout you need.</p>
                 </div>
                 
-                <div class="action-section">
+                <div class="action-section" id="choices-container">
                     <table>
                         <tr>
                             <td><button class="story_board_asset">Action Uno</button></td>
@@ -134,6 +136,58 @@
 
             <button id="embark_cont_bttn" onclick="Hud(6)">Continue</button>
         </div>
+
+
+        <div id="battle" style="display: none;">
+        <h2 style="text-align: center;">BATTLE</h2>
+        <hr>
+        <br>
+        <table style="width: 100%; table-layout: fixed; text-align: center;">
+            <tr>
+                <td id="player_status" style="font-size: 10px; color: #00ff00;">
+                    BUFFS: <span id="dmg_buff_val">0</span> ATK | <span id="arm_buff_val">0</span> DEF
+                </td>
+                <td id="enemy_status" style="font-size: 10px; color: gray;">NORMAL</td>
+            </tr>
+            <tr>
+                <td id="player_battle_icon" class="icns" style="font-size: 32px; padding: 10px 0;">@</td>
+                <td id="enemy_battle_icon" class="icns" style="font-size: 32px; padding: 10px 0;">&</td>
+            </tr>
+            <tr>
+                <td><span class="red icns">~</span> <a id="player_battle_health">20</a></td>
+                <td><span class="red icns">~</span> <a id="enemy_battle_health">10</a></td>
+            </tr>
+            <tr>
+                <td><span class="blue icns">%</span> <a id="player_battle_armor">10</a></td>
+                <td><span class="blue icns">%</span> <a id="enemy_battle_armor">10</a></td>
+            </tr>
+
+            <tr>
+                <td id="player_mental_state" style="font-size: 10px; letter-spacing: 1px;">MIND: CALM</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <div style="height: 50px; text-align: center; margin-top: 5px; padding: 0 10px;">
+            <h4 id="encounter_battle_test" style="font-size: 12px; color: white;"></h4>
+        </div>
+
+        <hr>
+
+        <div class="combat_book">
+            <button class="book_action" onclick="">ATTACK</button>
+            <button class="book_action" onclick="">ANALYZE</button>
+            
+            <button class="book_action" onclick="">DMG POT</button>
+            <button class="book_action" onclick="">STR POT</button>
+
+            <button class="book_action" onclick="">HEAL</button>
+            <button class="book_action" onclick="">BREATHE</button>
+            
+            <button id="bribe_btn" class="book_action" onclick="">BRIBE</button>
+            <button class="book_action" onclick="">SLAP</button>
+        </div>
+    </div>
 
         <script>
         document.addEventListener('DOMContentLoaded', () => {

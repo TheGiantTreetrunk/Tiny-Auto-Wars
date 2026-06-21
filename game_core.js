@@ -1,4 +1,3 @@
-//global variables
 var is_dev = 1;
 var day = 0;
 var distance = 0;
@@ -37,7 +36,6 @@ var class_colors = [
     "white", "red", "purple", "blue", "lime", "yellow", "magenta"
 ];
 
-// Base stats (Representing Level 1 Tiers)
 var class_health = [0, 15, 18, 8,  15, 12, 10];
 var class_damage = [0, 6,  5,  7,  3,  5,  9];
 var class_armor  = [0, 12, 18, 0,  8,  5,  3];
@@ -55,13 +53,11 @@ var class_data = {
     6: { name: "Artillerist", description: "Focused Heavy Firepower (Frail Vanguard)" }
 };
 
-//battlefield variables
 var terrain = [0,0,0,0,0,0,0,0,0,0];
 var terrain_type = ["Flat","Hills","Mountains"];
 var weather = [0,0,0,0,0,0,0,0,0,0];
 var weather_type = ["Clear","Cloudy","Rain","Snow"];
 
-//player army variables
 var player = {
     class: 0,
 	lvl: 1,
@@ -82,9 +78,69 @@ var player = {
 	}
 };
 
-var combat = 0;//0 = peace time 1 = war time
+var combat = 0;
 var plyr_points = 0;
 var enmy_points = 0;
+
+var playerInventory = [];
+
+var storyNodes = {
+    start: {
+        text: "A grumpy blacksmith stands over his anvil. 'What do you want?' he grunts. 'I'm busy, and I lost my favorite wrench.'",
+        choices: [
+            { text: "Look around the workshop floor.", nextNode: 'findWrench' },
+            { 
+                text: "Give him his wrench.", 
+                nextNode: 'giveWrench', 
+                requiredItem: "Wrench"
+            },
+            { text: "Insult his craftsmanship.", nextNode: 'triggerFight' }
+        ]
+    },
+    findWrench: {
+        text: "You rummage through some scrap metal and find a sturdy iron wrench!",
+        onEnter: () => { addItem("Wrench"); }, 
+        choices: [
+            { text: "Turn back to the blacksmith.", nextNode: 'start' }
+        ]
+    },
+    giveWrench: {
+        text: "The blacksmith's eyes light up. 'Ah, my wrench! Thank you, kid. Here, take this old dagger for your troubles.'",
+        onEnter: () => { 
+            removeItem("Wrench"); 
+            addItem("Iron Dagger"); 
+        },
+        choices: [
+            { text: "Thank him and leave.", nextNode: 'winScreen' }
+        ]
+    },
+    triggerFight: {
+        text: "The blacksmith drops his hammer and raises his fists. 'That's it, you're getting a lesson in manners!'",
+        choices: [
+            { text: "Put up your guards...", nextNode: 'startCombat' }
+        ]
+    },
+    startCombat: {
+        text: "Transitioning to combat...",
+        onEnter: () => { startCombatEngine("Blacksmith"); },
+        choices: []
+    },
+    winScreen: {
+        text: "You walk away with a shiny new dagger. Adventure successful!",
+        choices: [
+            { text: "Play again", nextNode: 'resetGame' }
+        ]
+    },
+    resetGame: {
+        text: "Resetting...",
+        onEnter: () => {
+            playerInventory = [];
+            updateInventoryDisplay();
+            showNode('start');
+        },
+        choices: []
+    }
+};
 
 function Hud(comand){
 	document.getElementById("mm").style.display = "none";
@@ -93,15 +149,14 @@ function Hud(comand){
 	document.getElementById("store_front").style.display = "none";
     document.getElementById("day_counter_hud").style.display = "none";
     document.getElementById("story_board").style.display = "none";
+    document.getElementById("battle").style.display = "none";
 
     if(comand == 0) {
-        //start
         document.body.classList.add('body_class_main_menu');
 		document.getElementById("mm").style.display = "block";
     }
 
     if(comand == 1) {
-        //class selecter is a new game
 		document.getElementById("rooster").style.display = "block";
         if(is_dev == 0) {
 		    renderClassTable();
@@ -111,12 +166,10 @@ function Hud(comand){
     }
 
     if(comand == 2) {
-        //how to play
 		document.getElementById("htp").style.display = "block";
     }
 
     if(comand == 3) {
-        //pre battle prep
 		if(player.class != 0) {
             document.getElementById("rooster").style.display = "block";
             toggleFade();
@@ -134,8 +187,6 @@ function Hud(comand){
     }
 
     if(comand == 4) {
-        //when just loading the tavern in general...
-
         var selected_class = class_data[player.class];
         var selectedColorClass = class_colors[player.class]; 
 
@@ -170,7 +221,6 @@ function Hud(comand){
     }
 
     if(comand == 5) {
-        //embark fade out shit
             document.getElementById("embark_day_counter").style.display = "none";
             document.getElementById("embark_distance_counter").style.display = "none";
             document.getElementById("embark_cont_bttn").style.display = "none";
@@ -186,23 +236,20 @@ function Hud(comand){
     }
 
     if(comand == 6) {
-        //the shoppe
         document.getElementById("day_counter_hud").style.display = "none";
         setTimeout(toggleFade, 2000);
         setTimeout(function(){ document.getElementById("story_board").style.display = "block" }, 3500);
         setTimeout(function(){ document.getElementById("story_board").classList.add('hut'); }, 1500);
+        showNode('start');
     }
 
     if(comand == 7) {
-        //battle
     }
 
     if(comand == 8) {
-        //loot tables
     }
 
     if(comand == 9) {
-        //the end of the game.
     }
 }
 
@@ -213,17 +260,14 @@ function renderClassTable() {
     let cols = 3;
 
     for (let i = 0; i < 7; i++) {
-        // If we hit 6 columns, start a new row
         if (i > 0 && i % cols === 0) {
             tableHtml += '</tr><tr>';
         }
 
         if (unlockedClasses[i]) {
-            // UNLOCKED: Show the class icon and color
             let color = class_colors[i];
             tableHtml += `<td><button data-class-num="${i}" class="class_select" onclick="class_selection(${i}, this)"><a class="icns ${color}">@</a></button></td>`;
         } else {
-            // LOCKED: Show a grayed out question mark or padlock
             tableHtml += `<td><button class="class_select locked" disabled><a class="icns dark_gray">@</a></button></td>`;
         }
     }
@@ -237,7 +281,7 @@ function unlockNextClass() {
         if (unlockedClasses[i] === false) {
             unlockedClasses[i] = true;
             console.log("New Class Unlocked: " + classes[i]);
-            break; // Only unlock one per win
+            break;
         }
     }
 }
@@ -290,21 +334,17 @@ function toggleFade() {
     document.getElementById('fadeElement').classList.toggle('fade-out');
 }
 
-// Dynamic stat generator linked directly to player.lvl
 function updatePlayerStats() {
     var classIndex = player.class;
     var level = player.lvl;
 
-    // Safety check for level out of bounds
     if (level < 1) level = 1;
     if (level > 3) level = 3;
 
-    // Grab Base Stats from your arrays
     var baseHp  = class_health[classIndex];
     var baseDmg = class_damage[classIndex];
     var baseArm = class_armor[classIndex];
 
-    // Overwrite the actual player properties directly based on tier level
     if (level === 1) {
         player.hp  = baseHp;
         player.dmg = baseDmg;
@@ -320,4 +360,53 @@ function updatePlayerStats() {
         player.dmg = baseDmg * 2;
         player.arm = baseArm * 2;
     }
+}
+
+function addItem(item) {
+    if (!playerInventory.includes(item)) {
+        playerInventory.push(item);
+        updateInventoryDisplay();
+    }
+}
+
+function removeItem(item) {
+    playerInventory = playerInventory.filter(i => i !== item);
+    updateInventoryDisplay();
+}
+
+function updateInventoryDisplay() {
+    const display = document.getElementById('inventory-display');
+    display.innerText = playerInventory.length > 0 
+        ? `Inventory: ${playerInventory.join(', ')}` 
+        : "Inventory: Empty";
+}
+
+function showNode(nodeId) {
+    const node = storyNodes[nodeId];
+        
+    if (node.onEnter) {
+        node.onEnter();
+        if (nodeId === 'resetGame' || nodeId === 'startCombat') return; 
+    }
+
+    document.getElementById('story-text').innerText = node.text;
+    const choicesContainer = document.getElementById('choices-container');
+    choicesContainer.innerHTML = '';
+        
+    node.choices.forEach(choice => {
+        if (choice.requiredItem && !playerInventory.includes(choice.requiredItem)) {
+            return;
+        }
+
+        const button = document.createElement('button');
+        button.innerText = choice.text;
+        button.classList.add('choice-btn');
+        button.onclick = () => showNode(choice.nextNode);
+        choicesContainer.appendChild(button);
+    });
+}
+
+function startCombatEngine(enemyName) {
+    console.log(`Combat initiated against: ${enemyName}`);
+    alert(`COMBAT HOOK TRIGGERED: You are now fighting ${enemyName}!`);
 }
