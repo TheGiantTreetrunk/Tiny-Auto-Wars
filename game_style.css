@@ -33,11 +33,6 @@ body {
     border-style: dashed;
 }
 
-fieldset.hut{
-        box-shadow: 10px 15px #4d1b00;
-        border: solid #cf763b;
-}
-
 .body_class_bazzar {
     background-color: #7c142c;
 	font-family: 'main';
@@ -478,12 +473,17 @@ fieldset {
     max-height: 85vh !important; 
     padding: 15px;
     box-sizing: border-box;
-    box-shadow: 5px 10px;
-    border: dashed;
+    box-shadow: 10px 15px #886C53;
+    border: solid #A5876A;
+    background-color: #EED0A8;
+    color: #C7392B;
     z-index: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+legend {
+    background-color: #EED0A8;
 }
 
 .description-section {

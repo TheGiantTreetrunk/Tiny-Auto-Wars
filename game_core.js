@@ -239,7 +239,6 @@ function Hud(comand){
         document.getElementById("day_counter_hud").style.display = "none";
         setTimeout(toggleFade, 2000);
         setTimeout(function(){ document.getElementById("story_board").style.display = "block" }, 3500);
-        setTimeout(function(){ document.getElementById("story_board").classList.add('hut'); }, 1500);
         showNode('start');
     }
 
