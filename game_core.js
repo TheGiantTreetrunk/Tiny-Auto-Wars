@@ -401,6 +401,7 @@ function showNode(nodeId) {
         const button = document.createElement('button');
         button.innerText = choice.text;
         button.classList.add('choice-btn');
+        button.classList.add('story_board_asset');
         button.onclick = () => showNode(choice.nextNode);
         choicesContainer.appendChild(button);
     });
