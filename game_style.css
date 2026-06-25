@@ -496,7 +496,7 @@ legend {
 .action-section {
     height: 50%;
     overflow-y: auto;
-    border-top: 4px dashed #ccc;
+    border-top: 4px dashed #C7392B;
     padding-top: 10px;
     box-sizing: border-box;
 }
@@ -507,9 +507,9 @@ legend {
 }
 
 button.story_board_asset {
-    background-color: #b4901e;
+    background-color: #886C53;
     color: #ffffff;
-    border: 4px solid #8d8638;
+    border: 4px solid #A5876A;
     width: 100%;
     margin: 8px 0; 
     box-sizing: border-box;
