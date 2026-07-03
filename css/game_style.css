@@ -5,14 +5,14 @@
 @font-face {
     font-family: 'Game_Icns';
     font-weight: normal;
-    src: url('test.ttf?v=5.00') format('truetype');
+    src: url('../font/test.ttf?v=5.00') format('truetype');
     font-style: normal;
 }
 
 @font-face {
     font-family: 'main';
     font-weight: normal;
-    src: url(font.otf);
+    src: url('../font/font.otf');
     font-style: normal;
 }
 
